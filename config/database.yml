@@ -1,0 +1,32 @@
+production:
+  database: <%= ENV['RDS_DB_NAME'] %>
+  username: <%= ENV['RDS_USERNAME'] %>
+  password: <%= ENV['RDS_PASSWORD'] %>
+  host: <%= ENV['RDS_HOSTNAME'] %>
+  port: <%= ENV['RDS_PORT'] %>
+  adapter: postgresql
+  encoding: unicode
+  reconnect: false
+  pool: 5
+
+development:
+  adapter: postgresql
+  encoding: unicode
+  reconnect: false
+  database: event_development
+  pool: 5
+  username: postgres
+  password: password
+  host: localhost
+  port: 5432
+
+test:
+  adapter: postgresql
+  encoding: unicode
+  reconnect: false
+  database: event_test_<%= ENV['TEST_ENV_NUMBER'] %>
+  pool: 5
+  username: postgres
+  password: password
+  host: localhost
+  port: 5432
