@@ -1,0 +1,10 @@
+development:
+  secret_key_base: a0b13cc3489f5e3fbb1a99352807d721cfebdef53c3eaa523856021f8c432ecb7a512a3303b305f54265a7bbb34e0971a8da7a18b0ffccec46aaa66ba2556a52
+
+test:
+  secret_key_base: 38ae6a7a37b9b3898b5d3684c6ad0e4faa6e4b08ebef51705ea8c14a423dee9711b6e3d79ac382f53f258d9d583fecc31f461647e38615f4123a5a1fcea43ece
+
+# Do not keep production secrets in the repository,
+# instead read values from the environment.
+production:
+  secret_key_base: <%= ENV["SECRET_KEY_BASE"] %>
