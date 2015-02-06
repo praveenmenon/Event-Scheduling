@@ -13,8 +13,8 @@ module ConfigCenter
 
     # Generic Name
     # a to z (both upper and lower case), 1 to 9, space, dot(.) and curly brackets "(" & ")" allowed.
-    NAME_MIN_LEN = 2
-    NAME_MAX_LEN = 256
+    NAME_MIN_LEN = 3
+    NAME_MAX_LEN = 50
     NAME_FORMAT_REG_EXP = /\A[a-zA-Z1-9\-\ \(\)\.+]*\z/i
 
     # User Name
@@ -30,7 +30,7 @@ module ConfigCenter
     # and 1 Number (1 to 9)
     # and 1 Special Character from (!,@,$,&,*,_)",
     PASSWORD_MIN_LEN = 7
-    PASSWORD_MAX_LEN = 256
+    PASSWORD_MAX_LEN = 50
     PASSWORD_FORMAT_REG_EXP = /\A(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9!@$#&*_\.,;:])/
     # PASSWORD_FORMAT_REG_EXP = /\A(?=.*?[a-z][A-Z])(?=.*?\d)(?=.*?[!@$&*_])/i
 

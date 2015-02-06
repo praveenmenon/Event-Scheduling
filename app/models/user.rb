@@ -4,7 +4,8 @@ has_secure_password
 
 validates :name,
 	:presence =>true,
-	 :format => {:with => /\A[a-zA-Z1-9\-\ \(\)\.+]*\z/i,:message =>"name should be in propper format"}
+	:length => {:minimum => 3,:maximum => 50},
+	:format => {:with => ConfigCenter::GeneralValidations::NAME_FORMAT_REG_EXP}
 
 validates :email,
 	:presence =>true,
@@ -12,7 +13,7 @@ validates :email,
 
 validates :password,
 	:presence =>true,
-	:length =>{:maximum=> 50, :minimum=> 6},
+	:length => {:minimum => 6 },
 	:format => {:with =>ConfigCenter::GeneralValidations::PASSWORD_FORMAT_REG_EXP} 	
 	
 
