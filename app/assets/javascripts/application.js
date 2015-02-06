@@ -11,7 +11,9 @@
 // about supported directives.
 //
 //= require jquery
+//= require jquery.validate
+//= require jquery.validate.additional-methods
+//= require validation
 //= require jquery_ujs
 //= require bootstrap
-//= require turbolinks
 //= require_tree .
