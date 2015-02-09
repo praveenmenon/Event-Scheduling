@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
 
-skip_before_filter :verify_authenticity_token
+	skip_before_filter :verify_authenticity_token
 
 	def new
 		@user = User.new
@@ -21,13 +21,14 @@ skip_before_filter :verify_authenticity_token
 		@user= User.new(user_params)
 		if @user.valid? && @user.errors.blank?
 			@user.save
+			session[:user_id] = @user.id
 			respond_to do |format|
 				
 				format.html{
-					redirect_to welcome_landing_page_path, :notice => "Signed up!"
+					redirect_to welcome_event_handler_path, :notice => "Signed up!"
 				}
 				format.js{
-					redirect_to(welcome_landing_page_path, :notice => 'Account created Successfully.') 
+					redirect_to(welcome_event_handler_path, :notice => 'Account created Successfully.') 
 				}
 			end
 

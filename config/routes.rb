@@ -6,18 +6,22 @@ Rails.application.routes.draw do
    root 'welcome#index'
 
   # Example of regular route:
-   get 'welcome/landing-page' => 'welcome#landing-page'
+   get 'welcome/event_handler' => 'welcome#event_handler'
    get 'static/index' => 'static#index'
+   get 'sessions/create' =>'sessions#create'
    get 'sessions/new' => 'sessions#new'
-   post 'sessions/create' =>'sessions#create'
+   get 'welcome/demo' =>'welcome#demo'
    delete 'sessions/destroy' => 'sessions#destroy'
    get "users/check_email" => 'users#check_email'
+   get "sessions/check_email" => 'sessions#check_email'
+   get "sessions/check_password" => 'sessions#check_password'
 
   # Example of named route that can be invoked with purchase_url(id: product.id)
   #   get 'products/:id/purchase' => 'catalog#purchase', as: :purchase
 
   # Example resource route (maps HTTP verbs to controller actions automatically):
      resources :users
+    resources :sessions
 
   # Example resource route with options:
   #   resources :products do
