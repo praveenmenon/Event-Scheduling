@@ -3,9 +3,9 @@ require 'spec_helper'
 
 RSpec.describe User::UsersController, :type => :controller do
 
-let(:user) {FactoryGirl.create(:user)}
+  let(:user) {FactoryGirl.create(:user)}
 
-describe "POST create" do
+  describe "POST create" do
     it "user should be able to create user" do
       user_params = {
         user: {
@@ -15,7 +15,7 @@ describe "POST create" do
           password_confirmation: "Password@1"
         }
       }
-        expect do
+      expect do
         post :create, user_params
       end.to change(User, :count).by(1)
     end

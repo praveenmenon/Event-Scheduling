@@ -1,48 +1,52 @@
 <nav class="navbar navbar-inverse ">
-        <div class="container">
-            <div class="navbar-header">
-                <button aria-controls="navbar" aria-expanded="false" data-target="#navbar" data-toggle="collapse" class="navbar-toggle collapsed" type="button">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a href="#" class="navbar-brand">Event Handler</a>
-            </div>
-            
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav navbar-right">
-               
-                    <li>
-                        <!-- Sign up Button trigger modal -->
-                        <!-- <button type="button" class="btn btn-success signup-login-btn" data-toggle="modal" data-target="#signUp">
-                            Sign up
-                        </button> -->
-            
-                       <%= button_to "Sign up", new_user_path ,:method=> :get, remote: true, :class=>"btn btn-success signup-login-btn", 'data-toggle' => 'modal', 'data-target'=>'#myModal'%>
-
-                       
-                    </li>
-                    
-                   
-                    <li>
-                        <!-- Log in Button trigger modal -->
-                       <!--  <button type="button" class="btn btn-success signup-login-btn" data-toggle="modal" data-target="#logIn">
-                            Log in
-                        </button> -->
-
-                        <%= button_to "Log In", sessions_new_path ,:method=> :get, remote: true, :class=>"btn btn-success signup-login-btn", 'data-toggle' => 'modal', 'data-target'=>'#myModal'%>
-
-                        <!-- Log in Modal -->
-                        <%#= render :partial => "layouts/modal/signin_modal" %>
-                         
-                    </li>
-                    
-                </ul>
-            </div><!--/.navbar-collapse -->
-        </div>
-    </nav>
-    <div class="container landing-content-area">
-        <h1 class="landing-heding">Event Handler </h1>
-        <h5> PROJECT BY PRAVEEN MENON</h5>
+  <div class="container">
+    <div class="navbar-header">
+      <button aria-controls="navbar" aria-expanded="false" data-target="#navbar" data-toggle="collapse" class="navbar-toggle collapsed" type="button">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <%= link_to "Event Handler",root_path,:class =>"navbar-brand" %>
     </div>
+
+    <div class="navbar-collapse collapse">
+      
+
+     <% if current_user.present? %>
+     <ul class="nav navbar-nav navbar-right">
+       <li><img src="assets/images/Profile-Pic.jpg" alt="Profile picture" class="img-rounded profile-pic">
+         <span class="profile-name"><%= current_user.name %></span>
+         <li> 
+           <%= button_to "Sign Out",sessions_destroy_path, :class => "btn btn-success signup-login-btn", :method => :delete %>
+         </li>
+
+       </ul>
+       <% else %>
+
+
+       
+       <ul class="nav navbar-nav navbar-right">
+         <li>
+          <%= button_to "Sign up", new_user_path ,:method=> :get, remote: true, :class=>"btn btn-success signup-login-btn", 'data-toggle' => 'modal', 'data-target'=>'#myModal'%>
+        </li>
+        <li>
+          <%= button_to "Log In", sessions_new_path ,:method=> :get, remote: true, :class=>"btn btn-success signup-login-btn", 'data-toggle' => 'modal', 'data-target'=>'#myModal'%>
+
+
+        </li>
+
+      </ul>
+
+    </div><!--/.navbar-collapse -->
+  </div>
+
+</nav>
+<div id="div_flash_message">
+  <%= render :partial=>"/layouts/common/flash_message" -%>
+</div>
+<div class="container landing-content-area">
+  <h1 class="landing-heding">Event Handler </h1>
+  <h5> PROJECT BY PRAVEEN MENON</h5>
+</div>
+<% end %>

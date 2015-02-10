@@ -1,5 +1,4 @@
 function validateUserForm() {
-
 	jQuery.validator.addMethod("startsWithCapital", function(value, element) {
 		return /^[A-Z][a-zA-Z _0-9]+$/.test( value );
 	});
@@ -33,7 +32,7 @@ function validateUserForm() {
 			"user[password]": {
 				required: true,
 				password_format: true,
-				minlength: 8,
+				minlength: 6,
 				maxlength: 32
 			},
 			"user[password_confirmation]": {
@@ -59,6 +58,7 @@ function validateUserForm() {
 			"user[password]": {
 				required: "Password can't be blank.",
 				password_format: "should have atleast 1 Character, 1 Number and 1 Special Character from (!,@,$,&,*,_).",
+				minlength: "Password should have minimum 6 characters",
 				maxlength: "Number of characters must be 8 to 32."
 			},
 			"user[password_confirmation]": {
