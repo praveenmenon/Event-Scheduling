@@ -20,11 +20,11 @@ ul li span.profile-name {
     color: #fff;padding-right: 15px;font-size: 18px;vertical-align: bottom;
 }
 .event-panels {
-    border: 1px solid #959595;
+    border: 1px solid #e3e3e3;
     background-color: #F5F5F5;padding: 15px;margin-bottom: 15px;
 }
 .event-panels:hover, .event-panels.active {
-    background-color: #bdbdbd;
+    background-color: #e5e5e5;
 }
 .event-panels .order-number {
   font-size: 24px;text-align: center; line-height: 72px;vertical-align: middle;
@@ -40,4 +40,40 @@ ul li span.profile-name {
 }
 .event-panels .participants .status {
     float: right;
+}
+
+.invite-tab {
+	height: 100px;
+}
+
+.table-fixed thead, .table-fixed tbody, .table-fixed tr, .table-fixed td, .table-fixed th { display: block; }
+.table-fixed tr:after {
+  content: ' ';
+  display: block;
+  visibility: hidden;
+  clear: both;
+}
+.table-fixed thead {
+  width: 97%;
+}
+.table-fixed thead th {
+  height: 30px;
+}
+.table-fixed tbody {
+  height: 130px;
+  overflow-y: auto;
+  width:100%;
+}
+.table-fixed tbody td,
+.table-fixed thead > tr> th {
+  float: left;
+  border-bottom-width:0;
+}
+
+.badge {
+  background-color: #4b8400;
+}
+
+.closed {
+  background-color: #bd0508;
 }
