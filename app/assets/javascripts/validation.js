@@ -2,6 +2,9 @@ function validateUserForm() {
 	jQuery.validator.addMethod("startsWithCapital", function(value, element) {
 		return /^[A-Z][a-zA-Z _0-9]+$/.test( value );
 	});
+	jQuery.validator.addMethod("noNumbers", function(value, element) {
+		return /^[a-zA-Z _]+$/.test( value );
+	});
 
 	jQuery.validator.addMethod("email_format", function(value, element) {
 		return /^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,6}$/.test( value );
@@ -22,7 +25,8 @@ function validateUserForm() {
 				required: true,
 				minlength: 2,
 				maxlength: 32,
-				startsWithCapital: true
+				startsWithCapital: true,
+				noNumbers: true
 			},
 			"user[email]": {
 				required: true,
@@ -48,7 +52,8 @@ function validateUserForm() {
 			"user[name]": {
 				required: "Name can't be blank.",
 				maxlength: "Number of characters must be 2 to 32.",
-				startsWithCapital: "Name Should start with Capital"
+				startsWithCapital: "Name Should start with Capital",
+				noNumbers: "Numbers are not allowed in name"
 			},
 			"user[email]": {
 				required: "Email can't be blank.",

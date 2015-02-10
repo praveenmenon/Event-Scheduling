@@ -16,7 +16,6 @@ function LoginUserForm(){
 			},
 			"password":{
 				required: true,
-				// remote:"/sessions/create"
 			}
 		},
 		errorElement: "span",
@@ -30,7 +29,6 @@ function LoginUserForm(){
 			},
 			"password": {
 				required: "Please enter the password",
-				// remote:"Wrong Password"
 			}
 
 		},

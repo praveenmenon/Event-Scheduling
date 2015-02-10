@@ -14,14 +14,16 @@
       
 
      <% if current_user.present? %>
+     <div class="navbar-collapse collapse">
      <ul class="nav navbar-nav navbar-right">
-       <li><img src="assets/images/Profile-Pic.jpg" alt="Profile picture" class="img-rounded profile-pic">
-         <span class="profile-name"><%= current_user.name %></span>
+       <li><img src="/assets/Profile-Pic.jpg" alt="Profile picture" class="img-rounded profile-pic">
+         <span class="profile-name"><%= current_user.name %></span></li>
          <li> 
            <%= button_to "Sign Out",sessions_destroy_path, :class => "btn btn-success signup-login-btn", :method => :delete %>
          </li>
 
        </ul>
+       </div>
        <% else %>
 
 
@@ -37,16 +39,8 @@
         </li>
 
       </ul>
-
+<% end %>
     </div><!--/.navbar-collapse -->
   </div>
 
 </nav>
-<div id="div_flash_message">
-  <%= render :partial=>"/layouts/common/flash_message" -%>
-</div>
-<div class="container landing-content-area">
-  <h1 class="landing-heding">Event Handler </h1>
-  <h5> PROJECT BY PRAVEEN MENON</h5>
-</div>
-<% end %>
