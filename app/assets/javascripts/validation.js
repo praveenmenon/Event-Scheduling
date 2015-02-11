@@ -8,7 +8,7 @@ function validateUserForm() {
 	});
 
 	jQuery.validator.addMethod("email_format", function(value, element) {
-		return /^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,6}$/.test( value );
+		return /^[a-zA-Z0-9 _.]+@[a-zA-Z_]+?\.[a-zA-Z]{2,6}$/.test( value );
 	});
 
 	jQuery.validator.addMethod("password_format", function(value, element) {
@@ -24,7 +24,7 @@ function validateUserForm() {
 		rules: {
 			"user[name]": {
 				required: true,
-				minlength: 2,
+				minlength: 1,
 				maxlength: 32,
 				noNumbers: true
 			},
@@ -62,7 +62,7 @@ function validateUserForm() {
 				required: "Password can't be blank.",
 				password_format: "should have atleast 1 Character, 1 Number and 1 Special Character from (!,@,$,&,*,_).",
 				minlength: "Password should have minimum 6 characters",
-				maxlength: "Number of characters must be 8 to 32."
+				maxlength: "Number of characters must be 6 to 32."
 			},
 			"user[password_confirmation]": {
 				required: "Password confirmation can't be blank.",

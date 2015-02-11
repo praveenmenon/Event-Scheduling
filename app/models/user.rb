@@ -4,7 +4,7 @@ class User < ActiveRecord::Base
 
 	validates :name,
 	:presence =>true,
-	:length => {:minimum => 3,:maximum => 50},
+	:length => {:minimum => 1,:maximum => 50},
 	:format => {:with => ConfigCenter::GeneralValidations::NAME_FORMAT_REG_EXP}
 
 	validates :email,
