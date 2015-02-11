@@ -20,7 +20,10 @@ skip_before_filter :verify_authenticity_token
 	def create
 		@user= User.new(user_params)
 		if @user.valid? && @user.errors.blank?
+			user_name=user_params[:name].titleize
+			@user.name=user_name
 			@user.save
+			session[:user_id] = @user.id
 			respond_to do |format|
 				
 				format.html{
