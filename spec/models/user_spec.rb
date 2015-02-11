@@ -26,11 +26,6 @@ RSpec.describe User,:type => :model do
     expect(user.errors[:name].size).to be 1
     expect(user).to be_invalid
 
-    user.name = "pr"
-    user.valid?
-    expect(user.errors[:name].size).to be 1
-    expect(user).to be_invalid
-
     user.name = "Praveen"
     user.valid?
     expect(user.errors[:name].size).to be 0
@@ -39,7 +34,7 @@ RSpec.describe User,:type => :model do
   end
   it "should validate password lenght" do
 
-    user.password = "praveen"
+    user.password = "prave"
     user.valid?
     expect(user.errors[:password].size).to be 1
     expect(user).to be_invalid
@@ -59,7 +54,7 @@ RSpec.describe User,:type => :model do
     end
 
     
-    ["p", "m"].each do |n|
+    [""].each do |n|
       user.name = n
       value = user.valid?
       expect(value).to be_falsy
@@ -89,13 +84,7 @@ RSpec.describe User,:type => :model do
       value = user.valid?
       expect(value).to be_truthy
     end
-
     
-    ["Password", "Pa"].each do |n|
-      user.password = n
-      value = user.valid?
-      expect(value).to be_falsy
-    end
   end
 
 end
