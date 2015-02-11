@@ -32,8 +32,7 @@ function validateUserForm() {
 			},
 			"user[password]": {
 				required: true,
-				password_format: true,
-				minlength: 8,
+				minlength: 6,
 				maxlength: 32
 			},
 			"user[password_confirmation]": {

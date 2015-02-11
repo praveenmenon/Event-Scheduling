@@ -13,8 +13,8 @@ validates :email,
 
 validates :password,
 	:presence =>true,
-	:length => {:minimum => 6 },
-	:format => {:with =>ConfigCenter::GeneralValidations::PASSWORD_FORMAT_REG_EXP} 	
+	:length => {:minimum => 6 }
+	# :format => {:with =>ConfigCenter::GeneralValidations::PASSWORD_FORMAT_REG_EXP} 	
 	
 
 end
