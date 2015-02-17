@@ -9,5 +9,12 @@ class ApplicationController < ActionController::Base
   	current_user ||= User.find(session[:user_id]) if session[:user_id]
   end
 
+  def require_login
+    unless session[:user_id]
+      redirect_to root_path
+      flash[:error] = "You must be logged in to access the section!"
+    end
+  end
+
   
 end
