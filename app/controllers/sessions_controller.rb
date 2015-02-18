@@ -14,19 +14,24 @@ class SessionsController < ApplicationController
 	end
 
 	def create
-		user = User.find_by_email(params[:email])
 
-		if user && user.authenticate(params[:password])
-			session[:user_id] = user.id
-			redirect_to welcome_event_handler_path, :notice => "Logged in!"
-			flash[:success]= "Successfully Logged In"
+		if params[:provider] == "twitter"
+   		auth = request.env["omniauth.auth"]
+	 		user = auth.find_by_provider_and_uid(auth["provider"],
+   		auth["uid"]) || User.create_with_omniauth(auth)      
 		else
-			flash[:error]="Email id and password does not match"
-			redirect_to root_path
-			
+   		user = User.authenticate(params[:email], params[:password])
 		end
 
-	end
+		if user
+ 			session[:user_id] = user.id
+ 			redirect_to welcome_event_handler_path, :notice => "Logged in!"
+ 			flash[:success]= "Successfully Logged In"
+		else	
+			flash[:error]="Email id and password does not match"
+			redirect_to root_path
+		end 
+	end 
 
 	def index
 	end
