@@ -1,0 +1,112 @@
+     <!-- Modal -->
+     <div class="modal fade" id="myCreate" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+       <div class="modal-content">
+        <div class="modal-header">
+         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+         <h4 class="modal-title" id="myModalLabel">Create a New Event</h4>
+       </div>
+       <div class="modal-body">
+
+        <!--Model body -->
+        <div class="row">
+         <div class="col-sm-12">
+
+         <%= form_tag events_path , :class =>"form-horizontal", :id =>"signin_user", :remote=> true, :method=> :post do |f| %>
+            <div class="form-group">
+             <label for="inputEvent" class="col-sm-3 control-label">Event*</label>
+             <div class="col-sm-7">
+             <%= text_field_tag :event,nil,:class =>"form-control", :id=>"event_name",:placeholder => "Event" %>
+            </div>
+            <div class="col-sm-2"></div>
+          </div>
+          <!--Venue -->
+          <div class="form-group">
+           <label for="inputVenue" class="col-sm-3 control-label">Venue</label>
+           <div class="col-sm-7">
+           <%= text_field_tag :venue,nil,:class =>"form-control", :id=>"venue_name",:placeholder => "Venue" %>
+          </div>
+          <div class="col-sm-2"></div>
+        </div>
+        <!--Date and Time -->
+        <div class="form-group">
+         <label for="inputDate" class="col-sm-3 control-label">Date</label>
+         <div class="col-sm-3">
+         <%= date_field_tag :date,nil,:class =>"form-control", :id=>"date",:placeholder => "Date" %>
+        </div>
+        <label for="inputTime" class="col-sm-1 control-label">Time</label>
+        <div class="col-sm-3">
+        <%= time_field_tag :time,nil,:class =>"form-control", :id=>"time",:placeholder => "Time" %>
+        </div>
+      </div>
+      <!--Description -->
+      <div class="form-group">
+       <label for="inputescription" class="col-sm-3 control-label">Description</label>
+       <div class="col-sm-7">
+       <%= text_area_tag :text,nil, :size=> '50x7',:class =>"form-control", :id=>"Description"%>
+      </div>
+      <div class="col-sm-2"></div>
+    </div>
+    <!--Invitees -->
+    <div class="form-group">
+     <label for="inputescription" class="col-sm-3 control-label">Invitees</label>
+     <div class="col-sm-7">
+      <table class="table table-responsive table-fixed">
+       <thead>
+        <tr>
+         <th class="col-sm-1">#</th>
+         <th class="col-sm-10">Name</th>
+       </tr>
+     </thead>
+     <tbody>
+      <tr>
+       <td class="col-sm-1"><input type="checkbox" value="true"></td>
+       <td class="col-sm-10">Mike Adams</td>
+     </tr>
+     <tr>
+       <td><input type="checkbox" value="true"></td>
+       <td>Holly Galivan</td>
+     </tr>
+     <tr>
+       <td><input type="checkbox" value="true"></td>
+       <td>Mike Adams</td>
+     </tr>
+     <tr>
+       <td><input type="checkbox" value="true"></td>
+       <td>Holly Galivan</td>
+     </tr>
+     <tr>
+       <td><input type="checkbox" value="true"></td>
+       <td>Mike Adams</td>
+     </tr>
+     <tr>
+       <td><input type="checkbox" value="true"></td>
+       <td>Holly Galivan</td>
+     </tr>
+   </tbody>
+ </table>
+</div>
+<div class="col-sm-2"></div>
+</div>
+
+<!--Status -->
+<div class="form-group">
+ <label for="inputstatus" class="col-sm-3 control-label">Status</label>
+ <div class="col-sm-3">
+ <%=select_tag "status", "<option>Open</option><option>Close</option><option>Blocked</option>".html_safe,:class=>"form-control"%>
+</div>
+<div class="col-sm-2"></div>
+</div>
+<%end%>
+<div class="modal-footer">
+  <%= submit_tag "OK", :class=>"btn btn-primary ok-btn-padding"%>
+  <button type="button" class="btn btn-default ok-btn-padding" data-dismiss="modal">Cancel</button>
+</div>
+</div>
+</div>
+<!-- ./ Moodel body -->     
+</div>
+
+</div>
+</div>
+</div>
