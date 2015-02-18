@@ -2,14 +2,13 @@
 .signup-login-btn {
     margin: 10px;
 }
-.landing-heding {
-    margin-top: 150px;
-}
 .ok-btn-padding {
     padding: 6px 24px;
 }
 .landing-content-area {
     color: #ffffff;text-align: center;
+    background-color: #333333;
+    padding:100px;border-radius: 10px;
 }
 
 /*Landing Page*/
