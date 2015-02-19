@@ -1,0 +1,70 @@
+<!--    Header-->
+  <%= render :partial => "layouts/common/header"%>
+<div id="div_flash_message">
+  <%= render :partial=>"/layouts/common/flash_message" -%>
+</div>
+<!--Content Area-->
+<div class="container">
+<div class="row"> 
+<div class="col-sm-12">
+ <!--Create Button trigger modal -->
+ <div class="well-sm pull-right">
+ <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#myCreate"> Create New Event </button>
+ </div>
+ <!-- Modal -->
+ <div class="modal fade" id="myCreate" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+   <div class="modal-content">
+    <div class="modal-header">
+     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+     <h4 class="modal-title" id="myModalLabel">Create a New Event</h4>
+    </div>
+    <div class="modal-body">
+    <%= render :partial => "layouts/event_handler/create_event_modal"%>
+
+ </div>
+  <div class="clearfix"></div>
+</div>
+<div class="row"> 
+ <!--List View column -->
+ <div class="col-sm-5"> 
+
+<%@events.each do|e|%>
+ <%= render :partial => "layouts/event_handler/ticket" %>
+ <%end%>
+ <!-- pagination -->
+<div>
+  <nav>
+  <ul class="pagination">
+    <li>
+      <a href="#" aria-label="Previous">
+        <span aria-hidden="true">&laquo;</span>
+      </a>
+    </li>
+    <li><a href="#">1</a></li>
+    <li><a href="#">2</a></li>
+    <li><a href="#">3</a></li>
+    <li><a href="#">4</a></li>
+    <li><a href="#">5</a></li>
+    <li>
+      <a href="#" aria-label="Next">
+        <span aria-hidden="true">&raquo;</span>
+      </a>
+    </li>
+  </ul>
+</nav>
+</div>  
+
+</div>
+
+<!-- ./List view -->
+
+<!--Show View item -->
+<div class="col-sm-7">
+<%#= render :partial => "layouts/event_handler/create_event"%> 
+</div>
+<!-- ./ Show item --> 
+
+</div>
+
+</div>

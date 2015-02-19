@@ -5,133 +5,26 @@
 </div>
 <!--Content Area-->
 <div class="container">
-  <div class="row"> 
-    <div class="col-sm-12">
-     <!--Create Button trigger modal -->
-     <div class="well-sm pull-right">
-       <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#myCreate"> Create New Event </button>
-     </div>
-     <!-- Modal -->
-     <div class="modal fade" id="myCreate" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-      <div class="modal-dialog">
-       <div class="modal-content">
-        <div class="modal-header">
-         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-         <h4 class="modal-title" id="myModalLabel">Create a New Event</h4>
-       </div>
-       <div class="modal-body">
-
-        <!--Model body -->
-        <div class="row">
-         <div class="col-sm-12">
-
-           <form class="form-horizontal">
-            <!--Venue -->
-            <div class="form-group">
-             <label for="inputEvent" class="col-sm-3 control-label">Event*</label>
-             <div class="col-sm-7">
-              <input type="text" class="form-control" id="event_name" placeholder="Event">
-            </div>
-            <div class="col-sm-2"></div>
-          </div>
-          <!--Venue -->
-          <div class="form-group">
-           <label for="inputVenue" class="col-sm-3 control-label">Venue</label>
-           <div class="col-sm-7">
-            <input type="email" class="form-control" id="inputEmail" placeholder="Venue">
-          </div>
-          <div class="col-sm-2"></div>
-        </div>
-        <!--Date and Time -->
-        <div class="form-group">
-         <label for="inputDate" class="col-sm-3 control-label">Date</label>
-         <div class="col-sm-3">
-          <input type="date" class="form-control" id="inputEmail" placeholder="Date">
-        </div>
-        <label for="inputTime" class="col-sm-1 control-label">Time</label>
-        <div class="col-sm-3">
-          <input type="Time" class="form-control" id="inputTime" placeholder="Time">
-        </div>
-      </div>
-      <!--Description -->
-      <div class="form-group">
-       <label for="inputescription" class="col-sm-3 control-label">Description</label>
-       <div class="col-sm-7">
-        <textarea class="form-control" id="inputBody" rows="6"></textarea>
-      </div>
-      <div class="col-sm-2"></div>
+<div class="row"> 
+<div class="col-sm-12">
+ <!--Create Button trigger modal -->
+ <div class="well-sm pull-right">
+ <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#myCreate"> Create New Event </button>
+ </div>
+ <!-- Modal -->
+ <div class="modal fade" id="myCreate" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+   <div class="modal-content">
+    <div class="modal-header">
+     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+     <h4 class="modal-title" id="myModalLabel">Create a New Event</h4>
     </div>
-    <!--Invitees -->
-    <div class="form-group">
-     <label for="inputescription" class="col-sm-3 control-label">Invitees</label>
-     <div class="col-sm-7">
-      <table class="table table-responsive table-fixed">
-       <thead>
-        <tr>
-         <th class="col-sm-1">#</th>
-         <th class="col-sm-10">Name</th>
-       </tr>
-     </thead>
-     <tbody>
-      <tr>
-       <td class="col-sm-1"><input type="checkbox" value="true"></td>
-       <td class="col-sm-10">Mike Adams</td>
-     </tr>
-     <tr>
-       <td><input type="checkbox" value="true"></td>
-       <td>Holly Galivan</td>
-     </tr>
-     <tr>
-       <td><input type="checkbox" value="true"></td>
-       <td>Mike Adams</td>
-     </tr>
-     <tr>
-       <td><input type="checkbox" value="true"></td>
-       <td>Holly Galivan</td>
-     </tr>
-     <tr>
-       <td><input type="checkbox" value="true"></td>
-       <td>Mike Adams</td>
-     </tr>
-     <tr>
-       <td><input type="checkbox" value="true"></td>
-       <td>Holly Galivan</td>
-     </tr>
-   </tbody>
- </table>
-</div>
-<div class="col-sm-2"></div>
-</div>
+    <div class="modal-body">
+    <%= render :partial => "layouts/event_handler/create_event_modal"%>
 
-<!--Status -->
-<div class="form-group">
- <label for="inputstatus" class="col-sm-3 control-label">Status</label>
- <div class="col-sm-3">
-  <select class="form-control" name="cc_exp_yr">
-   <option value="2014">Open</option>
-   <option value="2015">Close</option>
-   <option value="2016">Blocked</option>
- </select>
+ </div>
+  <div class="clearfix"></div>
 </div>
-<div class="col-sm-2"></div>
-</div>
-</form>
-<div class="modal-footer">
-  <button type="button" class="btn btn-primary ok-btn-padding">OK</button>
-  <button type="button" class="btn btn-default ok-btn-padding" data-dismiss="modal">Cancel</button>
-</div>
-</div>
-</div>
-<!-- ./ Moodel body -->     
-</div>
-
-</div>
-</div>
-</div>
-</div>
-<div class="clearfix"></div>
-</div>
-
 <div class="row"> 
  <!--List View column -->
  <div class="col-sm-5"> 
