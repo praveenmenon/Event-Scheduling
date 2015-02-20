@@ -1,7 +1,14 @@
+        <div class="modal-dialog">
+  <div class="modal-content">
+    <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+     <h4 class="modal-title" id="myModalLabel">Create a New Event</h4>
+    </div>
+<div class="modal-body"
         <!--Model body -->
         <div class="row">
          <div class="col-sm-12">
-          <%= form_for :event, :url => events_path, :method=> 'post',:html => {:class =>"form-horizontal",:id =>"form_event"} do |f| %>
+          <%= form_for :event, :url => events_path, :method=> 'post',:html => {:class =>"form-horizontal",:id =>"event_form"} do |f| %>
            
             <!--Venue -->
             <div class="form-group">
@@ -24,7 +31,7 @@
         <div class="form-group">
          <label for="inputDate" class="col-sm-3 control-label">Date</label>
          <div class="col-sm-3">
-          <%= f.date_field :date,:class =>"form-control", :id=>"event_date",:placeholder => "Date" %>
+          <%= f.date_field :date,:class =>"form-control", :id=>"date",:placeholder => "Date" %>
         </div>
         <label for="inputTime" class="col-sm-1 control-label">Time</label>
         <div class="col-sm-3">
@@ -35,7 +42,7 @@
       <div class="form-group">
        <label for="inputescription" class="col-sm-3 control-label">Description</label>
        <div class="col-sm-7">
-        <%= f.text_area :Description,:size=> "50x7",:class =>"form-control", :id=>"venue_name",:placeholder => "Venue" %>
+        <%= f.text_area :description,:size=> "50x7",:class =>"form-control", :id=>"venue_name",:placeholder => "Venue" %>
       </div>
       <div class="col-sm-2"></div>
     </div>
@@ -54,7 +61,8 @@
      <%@users=User.all%>
      <%@users.each do |u|%>
      <tr>
-       <td><input type="checkbox" value="true"></td>
+      <td><%=check_box_tag "invitees[u][]", u.id %></td>
+     
        <td><%=u.name.titleize%></td>
      </tr>
      <%end%>

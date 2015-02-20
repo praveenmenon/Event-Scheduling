@@ -2,18 +2,32 @@ class EventsController < ApplicationController
 	
 	def new
 		@event=Event.new
+		respond_to do |format|
+			format.js{}
+		end
+
 	end
 
 	def create
 		@event=Event.new(event_params)
+		@invitee=Invitee.new
+	
 		@event.user_id = current_user.id
 		if @event.valid? && @event.errors.blank?
+			
 			@event.save
+
+			(params["invitees"]["u"]).each do |i|
+			@user = i.to_i
+			@invitee.user_id = @user
+			@invitee.event_id= @event.id
+			@invitee.save
+			end
 			respond_to do |format|
 				
 				format.html{
 					redirect_to events_path,:notice => "Event Created!"
-				}
+			 	}
 				format.js{
 					binding.pry
 					redirect_to events_path,:notice => "Event Created!"

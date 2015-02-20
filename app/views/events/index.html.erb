@@ -20,7 +20,7 @@
      <h4 class="modal-title" id="myModalLabel">Create a New Event</h4>
     </div>
     <div class="modal-body">
-    <%= render :partial => "layouts/event_handler/create_event_modal"%>
+    <%= render :partial => "events/create_event_modal"%>
 
  </div>
   <div class="clearfix"></div>
@@ -30,7 +30,7 @@
  <div class="col-sm-5"> 
 
 <%@events.each do|e|%>
- <%= render :partial => "layouts/event_handler/ticket" %>
+ <%= render :partial => "events/ticket" %>
  <%end%>
  <!-- pagination -->
 <div>
@@ -61,7 +61,7 @@
 
 <!--Show View item -->
 <div class="col-sm-7">
-<%#= render :partial => "layouts/event_handler/create_event"%> 
+<%#= render :partial => "events/create_event"%> 
 </div>
 <!-- ./ Show item --> 
 

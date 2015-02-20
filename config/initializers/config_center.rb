@@ -9,7 +9,7 @@ module ConfigCenter
     NAME_MIN_LEN = 3
     NAME_MAX_LEN = 50
     NAME_FORMAT_REG_EXP = /\A[a-zA-Z1-9\-\ \(\)\.+]*\z/i
-
+   
     
 
     # Password
