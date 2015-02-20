@@ -25,6 +25,8 @@
 			<div class="modal-footer">
 				<%= submit_tag "Ok", :class=>"btn btn-primary ok-btn-padding", :id =>"signup_button"%>
 				<button type="button" class="btn btn-default ok-btn-padding" data-dismiss="modal">Cancel</button>
+				<br></br>
+				<center><%= link_to "Login with Twitter", "/auth/twitter", id: "sign_in" %></center>
 			</div>
 			<%end%>
 		</div>

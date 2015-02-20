@@ -16,6 +16,12 @@ Rails.application.routes.draw do
    get "sessions/check_email" => 'sessions#check_email'
    get "sessions/check_password" => 'sessions#check_password'
 
+
+   #OmniAuth twitter
+   get '/auth/:provider/callback', to: 'sessions#create'
+   get '/auth/failure', to: redirect('/')
+   get 'sign_out', to: 'sessions#destroy', as: 'sign_out'
+
   # Example of named route that can be invoked with purchase_url(id: product.id)
   #   get 'products/:id/purchase' => 'catalog#purchase', as: :purchase
 
