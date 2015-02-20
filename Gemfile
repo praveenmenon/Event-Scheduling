@@ -34,7 +34,7 @@ gem 'omniauth-twitter'
 # Use ActiveModel has_secure_password
 gem 'bcrypt'
 gem 'pry'
-
+gem 'capistrano', '~> 3.3.0'
 # Use Unicorn as the app server
 # gem 'unicorn'
 
