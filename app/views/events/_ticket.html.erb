@@ -5,10 +5,21 @@
      <div class="order-number">1 </div>
    </div>
    <div class="col-sm-10">
-     <div class="event-title"><a href="#">Birthday Party</a></div>
-     <div class="organiser"> Praveen</div>
+     <div class="event-title"><a href="#"><%=e.event_name%></a></div>
+     <div class="organiser"><%=User.find(e.user_id).name%></div>
      <!-- Participant button-->     
-     <div class="participants"><a href="#" data-toggle="modal" data-target=".participants-list">Participants</a> <span class="badge pull-right">Open</span></div>
+     <div class="participants"><a href="#" data-toggle="modal" data-target=".participants-list">Participants</a>
+     <%if e.status=="Open"%>
+     <%binding.pry%>
+      <span class="badge pull-right">Open</span>
+      <%elsif e.status=="Close"%>
+      <%binding.pry%>
+      <span class="badge closed pull-right">Close</span>
+      <%else%>
+      <%binding.pry%>
+      <span class="badge closed pull-right">Blocked</span>
+      <% end %>
+      </div>
      
      <!-- Participant modal -->
      <div class="modal fade participants-list" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">

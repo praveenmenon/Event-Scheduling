@@ -1,12 +1,5 @@
 function validateEventForm() {
 
-	var nowDate = new Date();
-	var today = new Date(nowDate.getFullYear(), nowDate.getMonth(), nowDate.getDate(), 0, 0, 0, 0);
-	$('#date').datepicker({ 
-	startDate: today 
-	});
-
-
 	$('#event_form').validate({
 		debug: true,
 		rules: {

@@ -30,7 +30,9 @@
  <!--List View column -->
  <div class="col-sm-5"> 
  
-<%#= render :partial => "layouts/event_handler/ticket"%>
+<%#@events.each do|e|%>
+ <%= render :partial => "events/ticket" %>
+ <%#end%>
 
 </div>
 
@@ -38,7 +40,7 @@
 
 <!--Show View item -->
 <div class="col-sm-7">
-<%#= render :partial => "layouts/event_handler/create_event"%> 
+<%#= render :partial => "events/create_event"%> 
 </div>
 <!-- ./ Show item --> 
 

@@ -7,6 +7,7 @@ Rails.application.routes.draw do
 
   # Example of regular route:
    get 'welcome/event_handler' => 'welcome#event_handler'
+   get 'events/index' => 'events#index'
    get 'static/index' => 'static#index'
    get 'sessions/create' =>'sessions#create'
    get 'sessions/new' => 'sessions#new'

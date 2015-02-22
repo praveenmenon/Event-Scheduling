@@ -1,12 +1,12 @@
 FactoryGirl.define do
   factory :event do
-    event "MyString"
-venue "MyString"
-date "2015-02-19"
-time "2015-02-19 09:24:18"
-description "MyText"
-status "MyString"
-user_id "MyString"
+	event_name "Praveen's Birthday"
+	venue "By The Way"
+	date "2015-08-10"
+	time "2000-01-01 19:00:00"
+	description "welcome friends"
+	status "Open"
+	user_id "5"
   end
 
 end

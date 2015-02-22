@@ -1,6 +1,7 @@
 class Event < ActiveRecord::Base
 
 	has_many :users
+	belongs_to :user
 
 	validates :event_name,
 	:presence =>true,
