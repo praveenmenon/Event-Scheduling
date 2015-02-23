@@ -19,5 +19,9 @@ class Event < ActiveRecord::Base
 
 	validates :status,
 	:presence =>true
+
+def self.invitees(user)
+	invitees.save
+end
 	
 end

@@ -1,4 +1,6 @@
 class EventsController < ApplicationController
+
+	before_create :event_invites
 	
 	def new
 		@event=Event.new
@@ -10,26 +12,13 @@ class EventsController < ApplicationController
 
 	def create
 		@event=Event.new(event_params)
-		@invitee=Invitee.new
-	
-		@event.user_id = current_user.id
-		if @event.valid? && @event.errors.blank?
-			
-			@event.save
-
-			(params["invitees"]["u"]).each do |i|
-			@user = i.to_i
-			@invitee.user_id = @user
-			@invitee.event_id= @event.id
-			@invitee.save
-			end
+		@event.invitees(user)
+		@event.save if @event.valid? && @event.errors.blank?
 			respond_to do |format|
-				
 				format.html{
 					redirect_to events_path,:notice => "Event Created!"
 			 	}
 				format.js{
-					binding.pry
 					redirect_to events_path,:notice => "Event Created!"
 				}
 			end
@@ -46,6 +35,10 @@ class EventsController < ApplicationController
 	
 	def event_params
 		params.require(:event).permit(:event_name, :venue, :date, :time, :description, :status)
+	end
+
+	def event_invites
+		@invitees=Event.where("event_id = ? AND user_id = ?", event.id, user.id)
 	end
 
 end

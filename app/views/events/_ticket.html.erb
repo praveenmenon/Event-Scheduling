@@ -10,13 +10,10 @@
      <!-- Participant button-->     
      <div class="participants"><a href="#" data-toggle="modal" data-target=".participants-list">Participants</a>
      <%if e.status=="Open"%>
-     <%binding.pry%>
       <span class="badge pull-right">Open</span>
       <%elsif e.status=="Close"%>
-      <%binding.pry%>
       <span class="badge closed pull-right">Close</span>
       <%else%>
-      <%binding.pry%>
       <span class="badge closed pull-right">Blocked</span>
       <% end %>
       </div>
