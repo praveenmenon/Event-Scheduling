@@ -23,17 +23,15 @@ gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
 
 gem 'rails_12factor', group: :production
-gem 'pg'
-gem 'rspec-rails', '~> 3.0'
-gem 'factory_girl_rails'
-gem 'shoulda'
+gem 'pg', '~> 0.18.1'
+
 gem 'bootstrap-sass'
 gem "jquery-validation-rails"
 gem 'omniauth-twitter'
 
 # Use ActiveModel has_secure_password
 gem 'bcrypt'
-gem 'pry'
+
 gem 'capistrano', '~> 3.3.0'
 # Use Unicorn as the app server
 # gem 'unicorn'
@@ -44,6 +42,10 @@ gem 'capistrano', '~> 3.3.0'
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
+  gem 'rspec-rails', '~> 3.0'
+	gem 'factory_girl_rails'
+	gem 'shoulda'
+	gem 'pry'
 
   # Access an IRB console on exception pages or by using <%= console %> in views
   gem 'web-console', '~> 2.0'
