@@ -26,8 +26,9 @@ def addInvitees(userid,eventid)
 	userid.each do |u|
 		@invitee.user_id= u
 		@invitee.event_id=eventid
+		@invitee.save
 	end
-	@invitee.save
+	
 end
 	
 end

@@ -6,15 +6,15 @@
    </div>
    <div class="col-sm-10">
      <div class="event-title"><a href="#"><%=e.event_name%></a></div>
-     <div class="organiser"><%=User.find(e.user_id).name%></div>
+     <div class="organiser"><%=e.user.name.titleize%></div>
      <!-- Participant button-->     
-     <div class="participants"><a href="#" data-toggle="modal" data-target=".participants-list">Participants</a>
-     <%if e.status=="Open"%>
+     <div class="participants">
+     <%#= link_to "Participants",events_participants_path, "data-toggle" => "modal","data-target"=>".participants-list" %>
+     <a href="#" data-toggle="modal" data-target=".participants-list">Participants</a>
+     <%if e.status=="open"%>
       <span class="badge pull-right">Open</span>
-      <%elsif e.status=="Close"%>
+      <%else e.status=="close"%>
       <span class="badge closed pull-right">Close</span>
-      <%else%>
-      <span class="badge closed pull-right">Blocked</span>
       <% end %>
       </div>
      
@@ -63,7 +63,7 @@
            </tbody>
          </table>
        </div>
-       <!-- ./ Participant modal --> 
+       <!-- ./ Participant modal  -->
      </div>
      <div class="modal-footer">
       <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>

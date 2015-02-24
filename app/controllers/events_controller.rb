@@ -15,14 +15,14 @@ class EventsController < ApplicationController
 			end
 			respond_to do |format|
 				format.html{
-					redirect_to welcome_event_handler_path,:notice => "Event Created!"
+					redirect_to events_index_path,:notice => "Event Created!"
 			 	}
 				format.js{
-					redirect_to welcome_event_handler_path,:notice => "Event Created!"
+					redirect_to events_index_path,:notice => "Event Created!"
 				}
 			end
 		else
-			redirect_to welcome_event_handler_path, :notice => "Event cannot be Created!"
+			redirect_to events_index_path, :notice => "Event cannot be Created!"
 		end
 	end
 
