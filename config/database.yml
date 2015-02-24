@@ -24,10 +24,9 @@ test:
   adapter: postgresql
   encoding: unicode
   reconnect: false
-  database: event_test
+  database: event_it
   pool: 5
   username: postgres
   password: password
   host: localhost
   port: 5432
-
