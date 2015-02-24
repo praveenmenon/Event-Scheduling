@@ -1,6 +1,7 @@
 class Event < ActiveRecord::Base
 
-	has_many :users
+	has_many :users,through: :invitees
+	has_many :invitees
 	belongs_to :user
 
 	validates :event_name,
@@ -20,8 +21,13 @@ class Event < ActiveRecord::Base
 	validates :status,
 	:presence =>true
 
-def self.invitees(user)
-	invitees.save
+def addInvitees(userid,eventid)
+	@invitee=Invitee.new()
+	userid.each do |u|
+		@invitee.user_id= u
+		@invitee.event_id=eventid
+	end
+	@invitee.save
 end
 	
 end

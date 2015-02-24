@@ -6,7 +6,6 @@ FactoryGirl.define do
 	time "2000-01-01 19:00:00"
 	description "welcome friends"
 	status "Open"
-	user 
 	end
 
 end
