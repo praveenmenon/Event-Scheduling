@@ -1,0 +1,106 @@
+<link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/themes/base/jquery-ui.css" type="text/css" media="all">
+
+ <script type="text/javascript">
+// var dateToday = new Date(); 
+// $(function() {
+//      $( "#datepicker" ).datepicker({ minDate: 0});
+// });
+</script>
+
+        <div class="modal-dialog">
+  <div class="modal-content">
+    <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+     <h4 class="modal-title" id="myModalLabel">Create a New Event</h4>
+    </div>
+<div class="modal-body"
+        <!--Model body -->
+        <div class="row">
+         <div class="col-sm-12">
+          <%= form_for :event, :url => events_path, :method=> 'post',:html => {:class =>"form-horizontal",:id =>"event_form"} do |f| %>
+           
+            <!--Venue -->
+            <div class="form-group">
+             <label for="inputEvent" class="col-sm-3 control-label">Event*</label>
+             <div class="col-sm-7">
+              
+              <%= f.text_field :event_name,:class =>"form-control1", :id=>"event_name",:placeholder => "Event" %>
+            </div>
+            <div class="col-sm-2"></div>
+          </div>
+          <!--Venue -->
+          <div class="form-group">
+           <label for="inputVenue" class="col-sm-3 control-label">Venue</label>
+           <div class="col-sm-7">
+            <%= f.text_field :venue,:class =>"form-control1", :id=>"venue_name",:placeholder => "Venue" %>
+          </div>
+          <div class="col-sm-2"></div>
+        </div>
+        <!--Date and Time -->
+        <div class="form-group">
+         <label for="inputDate" class="col-sm-3 control-label">Date</label>
+         <div class="col-sm-3">
+          <%= f.date_field :date,:class =>"form-control1", :id=>"venue_name",:id =>"datepicker",:placeholder => "Date" %>
+        </div>
+
+        <label for="inputTime" class="col-sm-1 control-label">Time</label>
+        <div class="col-sm-3">
+          <%= f.time_field :time,:class =>"form-control1", :id=>"event_time",:placeholder => "Time" %>
+        </div>
+      </div>
+      <!--Description -->
+      <div class="form-group">
+       <label for="inputescription" class="col-sm-3 control-label">Description</label>
+       <div class="col-sm-7">
+        <%= f.text_area :description,:size=> "50x7",:class =>"form-control1", :id=>"venue_name",:placeholder => "Venue" %>
+      </div>
+      <div class="col-sm-2"></div>
+    </div>
+    <!--Invitees -->
+    <div class="form-group">
+     <label for="inputescription" class="col-sm-3 control-label">Invitees</label>
+     <div class="col-sm-7" >
+      <table class="table table-responsive table-fixed">
+       <thead>
+        <tr>
+       
+         <th class="col-sm-10"></th>
+       </tr>
+     </thead>
+     <tbody style="border-style: solid;border-width: 1px;border-color: #ccc;">
+     <% @users=User.all %>
+     <% @users.each do |u|%>
+     <tr>
+     
+      <td><%= check_box_tag "invitees[u][]", u.id %></td>
+     
+       <td><%=u.name.titleize%></td>
+     </tr>
+     <%end%>
+   </tbody>
+ </table>
+</div>
+<div class="col-sm-2"></div>
+</div>
+
+<!--Status -->
+<div class="form-group">
+ <label for="inputstatus" class="col-sm-3 control-label">Status</label>
+ <div class="col-sm-3">
+  <%= f.select :status, options_for_select([['Open', 'open'], ['Close', 'close']]),{}, {class: 'form-control1'}  %>
+</div>
+<div class="col-sm-2"></div>
+</div>
+<div class="modal-footer">
+  <%= f.submit "Ok", :class=>"btn btn-primary ok-btn-padding", :id =>"signup_button"%>
+  <button type="button" class="btn btn-default ok-btn-padding" data-dismiss="modal">Cancel</button>
+</div>
+<%end%>
+</div>
+</div>
+<!-- ./ Moodel body -->     
+</div>
+
+</div>
+</div>
+</div>

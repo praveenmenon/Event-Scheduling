@@ -1,0 +1,49 @@
+<!--    Header-->
+  <%= render :partial => "layouts/common/header"%>
+<div id="div_flash_message">
+  <%= render :partial=>"/layouts/common/flash_message" %>
+</div>
+<!--Content Area-->
+<div class="container">
+<div class="row"> 
+<div class="col-sm-12">
+ <!--Create Button trigger modal -->
+ <div class="well-sm pull-right">
+ <%= button_to "Create New Event", new_event_path ,:method=> :get, remote: true, :class=>"btn btn-warning", 'data-toggle' => 'modal'%>
+ 
+ </div>
+ <!-- Modal -->
+ <div class="modal fade" id="myCreate" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <!-- <div class="modal-dialog"> -->
+   <!-- <div class="modal-content"> -->
+    <!-- <div class="modal-header"> -->
+     <!-- <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button> -->
+     <!-- <h4 class="modal-title" id="myModalLabel">Create a New Event</h4> -->
+    <!-- </div> -->
+    <!-- <div class="modal-body"> -->
+    <%= render :partial => "events/create_event_modal"%>
+
+ <!-- </div> -->
+  <div class="clearfix"></div>
+<!-- </div> -->
+<div class="row"> 
+ <!--List View column -->
+ <div class="col-sm-5"> 
+ 
+<%#@events.each do|e|%>
+ <%#= render :partial => "events/ticket",:locals=>{:e=>e} %>
+ <%#end%>
+
+</div>
+
+<!-- ./List view -->
+
+<!--Show View item -->
+<div class="col-sm-7">
+<%#= render :partial => "events/create_event"%> 
+</div>
+<!-- ./ Show item --> 
+
+</div>
+
+</div>

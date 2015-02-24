@@ -1,5 +1,7 @@
 class User < ActiveRecord::Base
 
+	has_many :events, through: :invitees
+	has_many :invitees
 	has_secure_password :validations => false
 
 

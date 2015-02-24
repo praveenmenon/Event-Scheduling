@@ -5,10 +5,18 @@
      <div class="order-number">1 </div>
    </div>
    <div class="col-sm-10">
-     <div class="event-title"><a href="#">Birthday Party</a></div>
-     <div class="organiser"> Praveen</div>
+     <div class="event-title"><a href="#"><%=e.event_name%></a></div>
+     <div class="organiser"><%=User.find(e.user_id).name%></div>
      <!-- Participant button-->     
-     <div class="participants"><a href="#" data-toggle="modal" data-target=".participants-list">Participants</a> <span class="badge pull-right">Open</span></div>
+     <div class="participants"><a href="#" data-toggle="modal" data-target=".participants-list">Participants</a>
+     <%if e.status=="Open"%>
+      <span class="badge pull-right">Open</span>
+      <%elsif e.status=="Close"%>
+      <span class="badge closed pull-right">Close</span>
+      <%else%>
+      <span class="badge closed pull-right">Blocked</span>
+      <% end %>
+      </div>
      
      <!-- Participant modal -->
      <div class="modal fade participants-list" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
@@ -69,25 +77,3 @@
 </div>
 </div>
 
-<!-- pagination -->
-<div>
-  <nav>
-  <ul class="pagination">
-    <li>
-      <a href="#" aria-label="Previous">
-        <span aria-hidden="true">&laquo;</span>
-      </a>
-    </li>
-    <li><a href="#">1</a></li>
-    <li><a href="#">2</a></li>
-    <li><a href="#">3</a></li>
-    <li><a href="#">4</a></li>
-    <li><a href="#">5</a></li>
-    <li>
-      <a href="#" aria-label="Next">
-        <span aria-hidden="true">&raquo;</span>
-      </a>
-    </li>
-  </ul>
-</nav>
-</div>  
