@@ -5,6 +5,14 @@ class EventsController < ApplicationController
 			format.js{}
 		end
 	end
+
+	def show 
+		@participant= Event.find(params[:id])
+		respond_to do |format|
+			format.js{}
+		end
+	end
+
 	def create
 		@event=Event.new(event_params)
 		@event.user_id=current_user.id
@@ -28,6 +36,14 @@ class EventsController < ApplicationController
 
 	def index
 		@events = Event.limit(5).order('id desc')
+		@event=@events.first
+	end
+
+	def edit
+		@event= Event.find(params[:id])
+			respond_to do |format|
+			format.js{}
+		end
 	end
 
 	private

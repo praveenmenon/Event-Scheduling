@@ -1,10 +1,10 @@
 <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/themes/base/jquery-ui.css" type="text/css" media="all">
 
  <script type="text/javascript">
-// var dateToday = new Date(); 
-// $(function() {
-//      $( "#datepicker" ).datepicker({ minDate: 0});
-// });
+var dateToday = new Date(); 
+$(function() {
+     $( "#datepicker" ).datepicker({ minDate: 0,dateFormat: 'yy-mm-dd'});
+});
 </script>
 
         <div class="modal-dialog">
@@ -40,7 +40,7 @@
         <div class="form-group">
          <label for="inputDate" class="col-sm-3 control-label">Date</label>
          <div class="col-sm-3">
-          <%= f.date_field :date,:class =>"form-control1", :id=>"venue_name",:id =>"datepicker",:placeholder => "Date" %>
+          <%= f.text_field :date,:class =>"form-control1", :id=>"venue_name",:id =>"datepicker",:placeholder => "Date" %>
         </div>
 
         <label for="inputTime" class="col-sm-1 control-label">Time</label>
@@ -71,7 +71,6 @@
      <% @users=User.all %>
      <% @users.each do |u|%>
      <tr>
-     
       <td><%= check_box_tag "invitees[u][]", u.id %></td>
      
        <td><%=u.name.titleize%></td>

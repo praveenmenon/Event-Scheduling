@@ -1,12 +1,14 @@
+
+
  <div class="row">
    <div class="col-sm-12">
     <div class="well">
-     <form class="form-horizontal">
+     <%= form_for :event, :url => events_path, :method=> :get,:html => {:class =>"form-horizontal"} do |f| %>
       <!--Venue -->
       <div class="form-group">
        <label for="inputEvent" class="col-sm-3 control-label">Event*</label>
        <div class="col-sm-7">
-        <input type="text" class="form-control" id="event_name" placeholder="Event">
+       <%= f.text_field :event_name,:class =>"form-control", :id=>"event_name",:placeholder => "Event" , readonly: true%>
       </div>
       <div class="col-sm-2"></div>
     </div>
@@ -14,7 +16,7 @@
     <div class="form-group">
      <label for="inputVenue" class="col-sm-3 control-label">Venue</label>
      <div class="col-sm-7">
-      <input type="email" class="form-control" id="inputEmail" placeholder="Venue">
+     <%= f.text_field :venue,:class =>"form-control", :id=>"venue_name",:placeholder => "Venue" %>
     </div>
     <div class="col-sm-2"></div>
   </div>
@@ -22,18 +24,18 @@
   <div class="form-group">
    <label for="inputDate" class="col-sm-3 control-label">Date</label>
    <div class="col-sm-3">
-    <input type="date" class="form-control" id="inputEmail" placeholder="Date">
+    <%= f.text_field :date,:class =>"form-control", :id=>"venue_name",:id =>"datepicker",:placeholder => "Date" %>
   </div>
   <label for="inputTime" class="col-sm-1a control-label">Time</label>
   <div class="col-sm-3">
-    <input type="Time" class="form-control" id="inputTime" placeholder="Time">
+    <%= f.time_field :time,:class =>"form-control", :id=>"event_time",:placeholder => "Time" %>
   </div>
 </div>
 <!--Description -->
 <div class="form-group">
  <label for="inputescription" class="col-sm-3 control-label">Description</label>
  <div class="col-sm-7">
-  <textarea class="form-control" id="inputBody" rows="6"></textarea>
+  <%= f.text_area :description,:size=> "50x7",:class =>"form-control", :id=>"venue_name",:placeholder => "Venue" %>
 </div>
 <div class="col-sm-2"></div>
 </div>
@@ -44,36 +46,18 @@
   <table class="table table-responsive table-fixed">
    <thead>
     <tr>
-     <th class="col-sm-1">#</th>
-     <th class="col-sm-10">Name</th>
    </tr>
  </thead>
- <tbody>
-  <tr>
-   <td class="col-sm-1"><input type="checkbox" value="true"></td>
-   <td class="col-sm-10">Mike Adams</td>
- </tr>
- <tr>
-   <td><input type="checkbox" value="true"></td>
-   <td>Holly Galivan</td>
- </tr>
- <tr>
-   <td><input type="checkbox" value="true"></td>
-   <td>Mike Adams</td>
- </tr>
- <tr>
-   <td><input type="checkbox" value="true"></td>
-   <td>Holly Galivan</td>
- </tr>
- <tr>
-   <td><input type="checkbox" value="true"></td>
-   <td>Mike Adams</td>
- </tr>
- <tr>
-   <td><input type="checkbox" value="true"></td>
-   <td>Holly Galivan</td>
- </tr>
-</tbody>
+ <tbody style="border-style: solid;border-width: 1px;border-color: #ccc;">
+     <% @users=User.all %>
+     <% @users.each do |u|%>
+     <tr>
+      <td><%= check_box_tag "invitees[u][]", u.id %></td>
+     
+       <td><%=u.name.titleize%></td>
+     </tr>
+     <%end%>
+   </tbody>
 </table>
 </div>
 <div class="col-sm-2"></div>
@@ -83,17 +67,13 @@
 <div class="form-group">
  <label for="inputstatus" class="col-sm-3 control-label">Status</label>
  <div class="col-sm-3">
-  <select class="form-control" name="cc_exp_yr">
-   <option value="2014">Open</option>
-   <option value="2015">Close</option>
-   <option value="2016">Blocked</option>
- </select>
+  <%= f.select :status, options_for_select([['Open', 'open'], ['Close', 'close']]),{}, {class: 'form-control1'}  %>
 </div>
 <div class="col-sm-2"></div>
 </div>
-</form>
+<%end%>
 <div class="modal-footer">
-  <button type="button" class="btn btn-primary ok-btn-padding">OK</button>
+  <%#= f.submit "Ok", :class=>"btn btn-primary ok-btn-padding", :id =>"signup_button"%>
   <button type="button" class="btn btn-default ok-btn-padding" data-dismiss="modal">Cancel</button>
 </div>
 </div>
