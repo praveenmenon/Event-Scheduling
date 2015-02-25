@@ -1,14 +1,23 @@
+ <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/themes/base/jquery-ui.css" type="text/css" media="all">
+
+ <script type="text/javascript">
+var dateToday = new Date(); 
+$(function() {
+     $( "#datepicker" ).datepicker({ minDate: 0,dateFormat: 'yy-mm-dd'});
+});
+</script>
 
 
  <div class="row">
    <div class="col-sm-12">
     <div class="well">
-     <%= form_for :event, :url => events_path, :method=> :get,:html => {:class =>"form-horizontal"} do |f| %>
+     <%= form_for :event, :url => events_path, :method=> :get,:html => {:class =>"form-horizontal",:id =>"event_form"} do |f| %>
       <!--Venue -->
       <div class="form-group">
        <label for="inputEvent" class="col-sm-3 control-label">Event*</label>
        <div class="col-sm-7">
-       <%= f.text_field :event_name,:class =>"form-control", :id=>"event_name",:placeholder => "Event" , readonly: true%>
+              
+        <%= f.text_field :event_name,:class =>"form-control", :id=>"event_name",:placeholder => "Event" , readonly:(@event.user_id!=current_user.id) %>
       </div>
       <div class="col-sm-2"></div>
     </div>
@@ -16,7 +25,7 @@
     <div class="form-group">
      <label for="inputVenue" class="col-sm-3 control-label">Venue</label>
      <div class="col-sm-7">
-     <%= f.text_field :venue,:class =>"form-control", :id=>"venue_name",:placeholder => "Venue" %>
+     <%= f.text_field :venue,:class =>"form-control", :id=>"venue_name",:placeholder => "Venue", readonly:(@event.user_id!=current_user.id) %>
     </div>
     <div class="col-sm-2"></div>
   </div>
@@ -24,18 +33,18 @@
   <div class="form-group">
    <label for="inputDate" class="col-sm-3 control-label">Date</label>
    <div class="col-sm-3">
-    <%= f.text_field :date,:class =>"form-control", :id=>"venue_name",:id =>"datepicker",:placeholder => "Date" %>
+    <%= f.text_field :date,:class =>"form-control", :id=>"venue_name",:id =>"datepicker" ,:placeholder => "Date", readonly:(@event.user_id!=current_user.id) %>
   </div>
   <label for="inputTime" class="col-sm-1a control-label">Time</label>
   <div class="col-sm-3">
-    <%= f.time_field :time,:class =>"form-control", :id=>"event_time",:placeholder => "Time" %>
+    <%= f.time_field :time,:class =>"form-control", :id=>"event_time",:placeholder => "Time" , readonly:(@event.user_id!=current_user.id)%>
   </div>
 </div>
 <!--Description -->
 <div class="form-group">
  <label for="inputescription" class="col-sm-3 control-label">Description</label>
  <div class="col-sm-7">
-  <%= f.text_area :description,:size=> "50x7",:class =>"form-control", :id=>"venue_name",:placeholder => "Venue" %>
+  <%= f.text_area :description,:size=> "50x7",:class =>"form-control", :id=>"venue_name",:placeholder => "Venue" , readonly:(@event.user_id!=current_user.id)%>
 </div>
 <div class="col-sm-2"></div>
 </div>
@@ -50,12 +59,28 @@
  </thead>
  <tbody style="border-style: solid;border-width: 1px;border-color: #ccc;">
      <% @users=User.all %>
+
+     <!-- not current user's ticket -->
+     <% if @event.user_id!=current_user.id %>
+        <%Invitee.where(event_id: @event.id).pluck(:user_id).each do |userid| %>
+        <% @users.each do |u|%>
+          <% if u.id ==userid%>
+          <tr>
+            <td><%= check_box_tag "invitees",value = nil%></td>
+            <td><%=u.name.titleize%></td>
+          </tr>
+          <%end%>
+        <%end%>
+        <%end%>
+     <%else%>
+     <!-- current user's ticket -->
      <% @users.each do |u|%>
      <tr>
       <td><%= check_box_tag "invitees[u][]", u.id %></td>
-     
        <td><%=u.name.titleize%></td>
      </tr>
+
+     <%end%>
      <%end%>
    </tbody>
 </table>
@@ -67,14 +92,18 @@
 <div class="form-group">
  <label for="inputstatus" class="col-sm-3 control-label">Status</label>
  <div class="col-sm-3">
-  <%= f.select :status, options_for_select([['Open', 'open'], ['Close', 'close']]),{}, {class: 'form-control1'}  %>
+  <%= f.select :status, ['open','close'],{selected: @event.status}, {class: 'form-control1'}  %>
 </div>
 <div class="col-sm-2"></div>
 </div>
-<%end%>
+
 <div class="modal-footer">
-  <%#= f.submit "Ok", :class=>"btn btn-primary ok-btn-padding", :id =>"signup_button"%>
+<% if @event.user_id==current_user.id %>
+  <%= f.submit "Ok", :class=>"btn btn-primary ok-btn-padding", :id =>"signup_button"%>
+  
   <button type="button" class="btn btn-default ok-btn-padding" data-dismiss="modal">Cancel</button>
+  <%end%>
+  <%end%>
 </div>
 </div>
 </div>
