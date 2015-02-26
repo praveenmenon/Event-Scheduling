@@ -18,14 +18,13 @@ body {
     margin: 80px auto;
     width: 500px;
 }
-/*.form-control1{
-	width: 125%;
-}*/
-.table {
+
+.tableCreateEvent {
   width: 125%;
   max-width: 125%;
   margin-bottom: 20px;
 }
+
 .table > tbody > tr > td{
 	border-top: 0px;
 }
@@ -77,4 +76,12 @@ textarea.form-control1 {
 .col-sm-1 {
 width: 16.333333%;
 }
+.col-sm-1a {
+    width: 8.33333333%;
+    position: relative;
+  min-height: 1px;
+  padding-right: 15px;
+  padding-left: 15px;
+  float: left
+  }
 

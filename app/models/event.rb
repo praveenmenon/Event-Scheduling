@@ -21,13 +21,12 @@ class Event < ActiveRecord::Base
 	validates :status,
 	:presence =>true
 
-def addInvitees(userid,eventid)
-	@invitee=Invitee.new()
-	userid.each do |u|
-		@invitee.user_id= u
-		@invitee.event_id=eventid
+
+def addInvitees(user_id,event_id)
+	user_id.each do |id|
+		@invitee = Invitee.new(user_id: id, event_id: event_id)
+		@invitee.save
 	end
-	@invitee.save
 end
 	
 end
