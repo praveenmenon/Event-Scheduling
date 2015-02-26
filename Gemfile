@@ -28,9 +28,12 @@ gem 'pg', '~> 0.18.1'
 gem 'bootstrap-sass'
 gem "jquery-validation-rails"
 gem 'omniauth-twitter'
+gem 'kaminari'
 
 # Use ActiveModel has_secure_password
 gem 'bcrypt'
+
+
 
 gem 'capistrano', '~> 3.3.0'
 # Use Unicorn as the app server

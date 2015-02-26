@@ -5,6 +5,14 @@ class EventsController < ApplicationController
 			format.js{}
 		end
 	end
+
+	def show 
+		@participant= Event.find(params[:id])
+		respond_to do |format|
+			format.js{}
+		end
+	end
+
 	def create
 		@event=Event.new(event_params)
 		@event.user_id=current_user.id
@@ -15,19 +23,27 @@ class EventsController < ApplicationController
 			end
 			respond_to do |format|
 				format.html{
-					redirect_to welcome_event_handler_path,:notice => "Event Created!"
+					redirect_to events_index_path,:notice => "Event Created!"
 			 	}
 				format.js{
-					redirect_to welcome_event_handler_path,:notice => "Event Created!"
+					redirect_to events_index_path,:notice => "Event Created!"
 				}
 			end
 		else
-			redirect_to welcome_event_handler_path, :notice => "Event cannot be Created!"
+			redirect_to events_index_path, :notice => "Event cannot be Created!"
 		end
 	end
 
 	def index
-		@events = Event.limit(5).order('id desc')
+		@events = Event.order("id desc").page(params[:page]).per(5)
+		@event=@events.first
+	end
+
+	def edit
+		@event= Event.find(params[:id])
+			respond_to do |format|
+			format.js{}
+		end
 	end
 
 	private
