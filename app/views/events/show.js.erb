@@ -1,2 +1,2 @@
-$('#popup_modal').html("<%= escape_javascript(render(:partial=>'events/participants')) %>");
+$('#popup_modal').html("<%= escape_javascript(render(:partial=>'events/participants', :locals=>{:participants=>@participants,:users=>@users})) %>");
 $('#popup_modal').modal("show")
