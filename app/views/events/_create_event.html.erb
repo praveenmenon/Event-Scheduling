@@ -3,7 +3,7 @@
  <script type="text/javascript">
 var dateToday = new Date(); 
 $(function() {
-     $( "#datepicker" ).datepicker({ minDate: 0,dateFormat: 'yy-mm-dd'});
+     $( "#datepicker1" ).datepicker({ minDate: 0,dateFormat: 'yy-mm-dd'});
 });
 </script>
 
@@ -33,7 +33,8 @@ $(function() {
   <div class="form-group">
    <label for="inputDate" class="col-sm-3 control-label">Date</label>
    <div class="col-sm-3">
-    <%= f.text_field :date,:class =>"form-control", :id=>"venue_name",:id =>"datepicker" ,:placeholder => "Date", readonly:(@event.user_id!=current_user.id) %>
+    <%= f.text_field :date,:class =>"form-control", :id=>"venue_name",:id =>"datepicker1
+    " ,:placeholder => "Date", readonly:(@event.user_id!=current_user.id) %>
   </div>
   <label for="inputTime" class="col-sm-1a control-label">Time</label>
   <div class="col-sm-3">

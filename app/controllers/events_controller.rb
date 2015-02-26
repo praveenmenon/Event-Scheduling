@@ -35,7 +35,7 @@ class EventsController < ApplicationController
 	end
 
 	def index
-		@events = Event.limit(5).order('id desc')
+		@events = Event.order("id desc").page(params[:page]).per(5)
 		@event=@events.first
 	end
 

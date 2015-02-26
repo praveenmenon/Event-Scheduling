@@ -21,6 +21,7 @@ class Event < ActiveRecord::Base
 	validates :status,
 	:presence =>true
 
+
 def addInvitees(user_id,event_id)
 	user_id.each do |id|
 		@invitee = Invitee.new(user_id: id, event_id: event_id)
