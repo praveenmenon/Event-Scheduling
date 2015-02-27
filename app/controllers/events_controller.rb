@@ -3,7 +3,6 @@ class EventsController < ApplicationController
 
 	def new
 		@event=Event.new
-
 		respond_to do |format|
 			format.js{}
 		end
