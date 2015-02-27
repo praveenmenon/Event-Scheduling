@@ -19,7 +19,6 @@ class SessionsController < ApplicationController
    		auth = request.env["omniauth.auth"]
    		if User.find_by_uid(auth["extra"]["raw_info"]["id"]).present? 
    			user= User.find_by_uid(auth["extra"]["raw_info"]["id"])
-   			user.email = auth.uid+"@twitter.com"
    		else	
 	 		user = auth.find_by_provider_and_uid(auth["provider"],
    		auth["uid"]) || User.create_with_omniauth(auth)

@@ -1,5 +1,5 @@
 class EventsController < ApplicationController
-	
+	before_filter :require_login
 
 	def new
 		@event=Event.new
@@ -24,7 +24,7 @@ class EventsController < ApplicationController
 		if @event.valid? && @event.errors.blank?
 			@event.save
 			if params["invitees"].present?
-				@event.addInvitees(params["invitees"]["u"],@event.id)
+				@event.addInvitees(params["invitees"],@event.id)
 			end
 			respond_to do |format|
 				format.html{
@@ -41,7 +41,7 @@ class EventsController < ApplicationController
 
 	def index
 		@users=User.all
-		@events = Event.order("id desc").page(params[:page]).per(5)
+		@events = Event.order("updated_at desc").page(params[:page]).per(5)
 		@event=@events.first
 		@participants=@event.selectInvitee(@event.id)
 	end
@@ -57,10 +57,10 @@ class EventsController < ApplicationController
 	
 	def update
 		@event= Event.find(params[:id])
-		if @event.valid? 
+		if @event.valid? && @event.errors.blank?
 			@event.update(event_params)
 			if params["invitees"].present?
-				@event.addInvitees(params["invitees"]["u"],@event.id)
+				@event.addInvitees(params["invitees"],@event.id)
 			end
 			respond_to do |format|
 				format.html{

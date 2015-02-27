@@ -3,6 +3,7 @@ require 'spec_helper'
 
 RSpec.describe Event, :type => :model do
   let(:event){FactoryGirl.create(:event)}
+  let(:user){FactoryGirl.create(:user)}
 
   context "Factory settings for events" do
     it "should validate the event factories" do
@@ -21,6 +22,13 @@ RSpec.describe Event, :type => :model do
       it { should allow_value('open').for(:status )}
     end
   end
+
+
+  it "should select invitee for an event" do
+    user_id=event.selectInvitee(event.id)
+    expect(user_id).not_to eq nil
+  end
+
   it "should not validate event name lenght > 30" do
     event.event_name = "pr"*30
     event.valid?

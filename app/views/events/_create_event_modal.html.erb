@@ -69,11 +69,10 @@
  </thead>
  <tbody style="border-style: solid;border-width: 1px;border-color: #ccc;">
    <% @users=User.all %>
-   <% @users.each do |u|%>
+   <% @users.each do |user|%>
    <tr>
-    <td><%= check_box_tag "invitees[u][]", u.id %></td>
-    
-    <td><%=u.name.titleize%></td>
+    <td><%= check_box_tag "invitees[]", user.id %></td>
+    <td><%=user.name.titleize%></td>
   </tr>
   <%end%>
 </tbody>
