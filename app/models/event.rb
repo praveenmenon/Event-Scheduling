@@ -28,5 +28,9 @@ def addInvitees(user_id,event_id)
 		@invitee.save
 	end
 end
+
+def selectInvitee(event)
+	Invitee.where(event_id: event).pluck(:user_id)
+end
 	
 end

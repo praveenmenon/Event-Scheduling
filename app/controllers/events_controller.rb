@@ -1,13 +1,18 @@
 class EventsController < ApplicationController
+	before_filter :require_login
+
 	def new
 		@event=Event.new
+
 		respond_to do |format|
 			format.js{}
 		end
 	end
 
 	def show 
-		@participant= Event.find(params[:id])
+		@users=User.all 
+		@event= Event.find(params[:id])
+		@participants=@event.selectInvitee(@event.id)
 		respond_to do |format|
 			format.js{}
 		end
@@ -19,12 +24,12 @@ class EventsController < ApplicationController
 		if @event.valid? && @event.errors.blank?
 			@event.save
 			if params["invitees"].present?
-			@event.addInvitees(params["invitees"]["u"],@event.id)
+				@event.addInvitees(params["invitees"],@event.id)
 			end
 			respond_to do |format|
 				format.html{
 					redirect_to events_index_path,:notice => "Event Created!"
-			 	}
+				}
 				format.js{
 					redirect_to events_index_path,:notice => "Event Created!"
 				}
@@ -35,15 +40,40 @@ class EventsController < ApplicationController
 	end
 
 	def index
-		@events = Event.order("id desc").page(params[:page]).per(5)
+		@users=User.all
+		@events = Event.order("updated_at desc").page(params[:page]).per(5)
 		@event=@events.first
+		@participants=@event.selectInvitee(@event.id)
 	end
 
 	def edit
+		@users=User.all
 		@event= Event.find(params[:id])
-			respond_to do |format|
+		@participants=@event.selectInvitee(@event.id)
+		respond_to do |format|
 			format.js{}
 		end
+	end
+	
+	def update
+		@event= Event.find(params[:id])
+		if @event.valid? && @event.errors.blank?
+			@event.update(event_params)
+			if params["invitees"].present?
+				@event.addInvitees(params["invitees"],@event.id)
+			end
+			respond_to do |format|
+				format.html{
+					redirect_to events_index_path,:notice => "Event Updated!"
+				}
+				format.js{
+					redirect_to events_index_path,:notice => "Event Updated!"
+				}
+			end
+		else
+			redirect_to events_index_path, :notice => "Event cannot be Updated!"
+		end
+
 	end
 
 	private

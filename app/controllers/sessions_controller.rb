@@ -17,7 +17,7 @@ class SessionsController < ApplicationController
 
 		if params[:provider] == "twitter"
    		auth = request.env["omniauth.auth"]
-   		if auth["extra"]["raw_info"]["id"].present? 
+   		if User.find_by_uid(auth["extra"]["raw_info"]["id"]).present? 
    			user= User.find_by_uid(auth["extra"]["raw_info"]["id"])
    		else	
 	 		user = auth.find_by_provider_and_uid(auth["provider"],

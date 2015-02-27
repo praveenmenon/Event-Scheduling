@@ -14,32 +14,19 @@
            <th class="col-sm-4">Status</th>
          </tr>
        </thead>
+       
+       <%participants.each do |userid| %>
+       <% users.each do |u|%>
+       <% if u.id ==userid%>
        <tbody>
         <tr>
-         <td class="col-sm-8">Mike Adams</td>
+         <td class="col-sm-8"><%=u.name.titleize%></td>
          <td class="col-sm-2"><label class="radio-inline"><input type="radio" name="optionsRadios" id="yes" value="yes1" checked="">Yes</label> <label class="radio-inline"><input type="radio" name="optionsRadios" id="no" value="no1" checked="">No</label></td>
-       </tr>
-       <tr>
-         <td class="col-sm-8">Holly Galivan</td>
-         <td class="col-sm-2"><label class="radio-inline"><input type="radio" name="optionsRadios" id="yes" value="yes1" checked="">Yes</label> <label class="radio-inline"><input type="radio" name="optionsRadios" id="no" value="no1" checked="">No</label></td>
-       </tr>     
-       <tr>
-         <td class="col-sm-8">Mike Adams</td>
-         <td class="col-sm-2"><label class="radio-inline"><input type="radio" name="optionsRadios" id="yes" value="yes1" checked="">Yes</label> <label class="radio-inline"><input type="radio" name="optionsRadios" id="no" value="no1" checked="">No</label></td>
-       </tr>
-       <tr>
-         <td class="col-sm-8">Holly Galivan</td>
-         <td class="col-sm-2"><label class="radio-inline"><input type="radio" name="optionsRadios" id="yes" value="yes1" checked="">Yes</label> <label class="radio-inline"><input type="radio" name="optionsRadios" id="no" value="no1" checked="">No</label></td>
-       </tr>  
-       <tr>
-         <td class="col-sm-8">Mike Adams</td>
-         <td class="col-sm-2"><label class="radio-inline"><input type="radio" name="optionsRadios" id="yes" value="yes1" checked="">Yes</label> <label class="radio-inline"><input type="radio" name="optionsRadios" id="no" value="no1" checked="">No</label></td>
-       </tr>
-       <tr>
-         <td class="col-sm-8">Holly Galivan</td>
-         <td class="col-sm-2"><label class="radio-inline"><input type="radio" name="optionsRadios" id="yes" value="yes1" checked="">Yes</label> <label class="radio-inline"><input type="radio" name="optionsRadios" id="no" value="no1" checked="">No</label></td>
-       </tr>                  
+       </tr>               
      </tbody>
+     <%end%>
+     <%end%>
+     <%end%>
    </table>
  </div>
  <!-- ./ Participant modal  -->

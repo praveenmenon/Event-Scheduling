@@ -28,4 +28,10 @@ RSpec.describe EventsController, :type => :controller do
     end
   end
 
+  it "updates the requested event" do
+  value = event
+  patch :update, {:id => event.id, :event => {:event_name=> "demo", :venue=> "mysore", :date=> "2016-02-28", :time=>"2000-01-01 1:02:00", :description=>"demo in mysore", :status=>"open"}}
+  expect(value).should_not eq(event)
+end
+
 end
