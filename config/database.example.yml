@@ -24,7 +24,7 @@ it:
   adapter: postgresql
   encoding: unicode
   reconnect: false
-  database: event_it
+  database: event_scheduling_it
   pool: 5
   username: postgres
   password: password
