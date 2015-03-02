@@ -1,5 +1,6 @@
 set :stage, :production
 set :branch, :master
+set :rails_env, :production
 set :deploy_to, '/u01/apps/qwinix/event-scheduling'
 set :log_level, :debug
 
