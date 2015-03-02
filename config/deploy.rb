@@ -24,6 +24,17 @@ set :whenever_roles, :all
 
 namespace :deploy do
 
+  desc "Copy database.yml.example"
+  task :copy_database_yml do
+    on roles(:app) do
+      execute "mkdir -p #{shared_path}/config"
+      execute "cp -f #{release_path}/config/database.example.yml #{shared_path}/config/database.yml"
+      execute "rm -f #{release_path}/config/database.yml"
+      execute "ln -nfs #{shared_path}/config/database.yml #{release_path}/config/database.yml"
+      execute "rm -f #{release_path}/config/database.example.yml"
+    end
+  end
+
   desc 'Restart application'
   task :restart do
     on roles(:app), in: :sequence, wait: 5 do
