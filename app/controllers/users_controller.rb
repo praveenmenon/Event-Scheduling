@@ -2,7 +2,7 @@ class UsersController < ApplicationController
 
 	before_filter :require_login, :only=>[:index]
 	skip_before_filter :verify_authenticity_token
-	
+
 	def new
 		@user = User.new
 		respond_to do |format|
@@ -24,12 +24,12 @@ class UsersController < ApplicationController
 			@user.save
 			session[:user_id] = @user.id
 			respond_to do |format|
-				
+
 				format.html{
-					redirect_to  events_index_path, :notice => "Signed up!"
+					redirect_to  events_path, :notice => "Signed up!"
 				}
 				format.js{
-					redirect_to(events_index_path, :notice => 'Account created Successfully.') 
+					redirect_to(events_path, :notice => 'Account created Successfully.')
 				}
 			end
 

@@ -9,8 +9,8 @@ class EventsController < ApplicationController
 		end
 	end
 
-	def show 
-		@users=User.all 
+	def show
+		@users=User.all
 		@event= Event.find(params[:id])
 		@participants=@event.selectInvitee(@event.id)
 		respond_to do |format|
@@ -28,14 +28,14 @@ class EventsController < ApplicationController
 			end
 			respond_to do |format|
 				format.html{
-					redirect_to events_index_path,:notice => "Event Created!"
+					redirect_to events_path,:notice => "Event Created!"
 				}
 				format.js{
-					redirect_to events_index_path,:notice => "Event Created!"
+					redirect_to events_path,:notice => "Event Created!"
 				}
 			end
 		else
-			redirect_to events_index_path, :notice => "Event cannot be Created!"
+			redirect_to events_path, :notice => "Event cannot be Created!"
 		end
 	end
 
@@ -54,7 +54,7 @@ class EventsController < ApplicationController
 			format.js{}
 		end
 	end
-	
+
 	def update
 		@event= Event.find(params[:id])
 		if @event.valid? && @event.errors.blank?
@@ -64,20 +64,20 @@ class EventsController < ApplicationController
 			end
 			respond_to do |format|
 				format.html{
-					redirect_to events_index_path,:notice => "Event Updated!"
+					redirect_to events_path,:notice => "Event Updated!"
 				}
 				format.js{
-					redirect_to events_index_path,:notice => "Event Updated!"
+					redirect_to events_path,:notice => "Event Updated!"
 				}
 			end
 		else
-			redirect_to events_index_path, :notice => "Event cannot be Updated!"
+			redirect_to events_path, :notice => "Event cannot be Updated!"
 		end
 
 	end
 
 	private
-	
+
 	def event_params
 		params.require(:event).permit(:event_name, :venue, :date, :time, :description, :status)
 	end
