@@ -22,23 +22,23 @@ class User < ActiveRecord::Base
 	:unless => proc{|u| u.provider.present?}
 
 	def self.authenticate(email, password)
-    user = find_by_email(email)
-    if user && user.password_digest == BCrypt::Engine.hash_secret(password, user.password_digest)
-      user
-    else
-      nil
-    end
-  end		
+		user = find_by_email(email)
+		if user && user.password_digest == BCrypt::Engine.hash_secret(password, user.password_digest)
+			user
+		else
+			nil
+		end
+	end		
 
-def self.create_with_omniauth(auth)
-    create! do |user|
-    user.provider = auth["provider"]
-    user.uid = auth.uid
-    user.name = auth.info.name
-    user.email = auth.uid+"@twitter.com"
-    user.save!
-    end
-  end
+	def self.create_with_omniauth(auth)
+		create! do |user|
+			user.provider = auth["provider"]
+			user.uid = auth.uid
+			user.name = auth.info.name
+			user.email = auth.uid+"@twitter.com"
+			user.save!
+		end
+	end
 
 
 end

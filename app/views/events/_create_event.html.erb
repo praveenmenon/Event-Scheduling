@@ -32,8 +32,7 @@
  <div class="form-group">
    <label for="inputDate" class="col-sm-3 control-label">Date</label>
    <div class="col-sm-3">
-    <%= f.text_field :date,:class =>"form-control", :id=>"venue_name",:id =>"datepicker1
-    " ,:placeholder => "Date", readonly:(@event.user_id!=current_user.id) %>
+    <%= f.text_field :date,:class =>"form-control", :id=>"venue_name",:id =>"datepicker1" ,:placeholder => "Date", readonly:(@event.user_id!=current_user.id) %>
   </div>
   <label for="inputTime" class="col-sm-1a control-label">Time</label>
   <div class="col-sm-3">
@@ -82,8 +81,7 @@
   <%end%>
   <%end%>
   <%end%>
-
-  <%@user=users.where('id not in (?)',participants)%>
+  <%@user=notparticipants%>
   <% @user.each do |user|%>
   <tr>
     <td><%= check_box_tag "invitees[]", user.id %></td>

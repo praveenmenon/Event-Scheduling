@@ -43,7 +43,7 @@ RSpec.describe User,:type => :model do
     expect(user).to be_invalid
   end
 
-it "should validate password lenght > 5" do
+  it "should validate password lenght > 5" do
 
     user.password = "Password@1"
     user.valid?
@@ -54,36 +54,36 @@ it "should validate password lenght > 5" do
   it "should validate name praveen" do
     
     
-      user.name = "Praveen"
-      value = user.valid?
-      expect(value).to be_truthy
-    end
+    user.name = "Praveen"
+    value = user.valid?
+    expect(value).to be_truthy
+  end
 
   it "should not validate an empty name"do
-    
-      user.name = ""
-      value = user.valid?
-      expect(value).to be_falsy
-  end
+  
+  user.name = ""
+  value = user.valid?
+  expect(value).to be_falsy
+end
 
-  it "should validate email pmenon@qwinixtech.com" do
-    
-      user.email = "pmenon@qwinixtech.com"
-      value = user.valid?
-      expect(value).to be_truthy
-    end
+it "should validate email pmenon@qwinixtech.com" do
+  
+  user.email = "pmenon@qwinixtech.com"
+  value = user.valid?
+  expect(value).to be_truthy
+end
 
-  it "should not validate email praveenmenon.com"do
-      user.email = "praveenmenon.com"
-      value = user.valid?
-      expect(value).to be_falsy
-  end
+it "should not validate email praveenmenon.com"do
+user.email = "praveenmenon.com"
+value = user.valid?
+expect(value).to be_falsy
+end
 
-  it "should validate password Password@1" do
-    
-      user.password = "Password@1"
-      value = user.valid?
-      expect(value).to be_truthy
-    end
+it "should validate password Password@1" do
+  
+  user.password = "Password@1"
+  value = user.valid?
+  expect(value).to be_truthy
+end
 
 end
