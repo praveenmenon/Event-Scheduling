@@ -1,0 +1,3 @@
+$('#popup_modal').html("<%= escape_javascript(render(:partial=>'events/create_event_modal')) %>");
+$('#popup_modal').modal("show")
+validateEventForm();

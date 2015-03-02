@@ -14,6 +14,8 @@
 //= require jquery.validate
 //= require jquery.validate.additional-methods
 //= require validation
+//= require eventvalid
+//= require utility
 //= require signin_valid
 //= require jquery_ujs
 //= require bootstrap

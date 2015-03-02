@@ -26,10 +26,10 @@ class UsersController < ApplicationController
 			respond_to do |format|
 				
 				format.html{
-					redirect_to welcome_event_handler_path, :notice => "Signed up!"
+					redirect_to  events_index_path, :notice => "Signed up!"
 				}
 				format.js{
-					redirect_to(welcome_event_handler_path, :notice => 'Account created Successfully.') 
+					redirect_to(events_index_path, :notice => 'Account created Successfully.') 
 				}
 			end
 

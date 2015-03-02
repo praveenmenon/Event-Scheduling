@@ -7,6 +7,8 @@ Rails.application.routes.draw do
 
   # Example of regular route:
    get 'welcome/event_handler' => 'welcome#event_handler'
+   get 'events/participants' => 'events#participants'
+   get 'events/index' => 'events#index'
    get 'static/index' => 'static#index'
    get 'sessions/create' =>'sessions#create'
    get 'sessions/new' => 'sessions#new'
@@ -28,6 +30,7 @@ Rails.application.routes.draw do
   # Example resource route (maps HTTP verbs to controller actions automatically):
      resources :users
     resources :sessions
+    resources :events
 
   # Example resource route with options:
   #   resources :products do

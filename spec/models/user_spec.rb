@@ -19,25 +19,31 @@ RSpec.describe User,:type => :model do
     end
   end
 
-  it "should validate name lenght" do
+  it "should  not validate name lenght > 50" do
 
     user.name = "pr"*50
     user.valid?
     expect(user.errors[:name].size).to be 1
     expect(user).to be_invalid
+  end
 
+  it "should validate name lenght < 50" do
     user.name = "Praveen"
     user.valid?
     expect(user.errors[:name].size).to be 0
     expect(user).to be_valid
 
   end
-  it "should validate password lenght" do
+
+  it "should not validate password lenght < 6" do
 
     user.password = "prave"
     user.valid?
     expect(user.errors[:password].size).to be 1
     expect(user).to be_invalid
+  end
+
+it "should validate password lenght > 5" do
 
     user.password = "Password@1"
     user.valid?
@@ -45,46 +51,39 @@ RSpec.describe User,:type => :model do
     expect(user).to be_valid
   end
 
-  it "should validate name" do
+  it "should validate name praveen" do
     
-    ["Praveen", "Menon"].each do |n|
-      user.name = n
+    
+      user.name = "Praveen"
       value = user.valid?
       expect(value).to be_truthy
     end
 
+  it "should not validate an empty name"do
     
-    [""].each do |n|
-      user.name = n
+      user.name = ""
       value = user.valid?
       expect(value).to be_falsy
-    end
   end
 
-  it "should validate email" do
+  it "should validate email pmenon@qwinixtech.com" do
     
-    ["pmenon@qwinixtech.com", "praveenmenon@gmail.com"].each do |n|
-      user.email = n
+      user.email = "pmenon@qwinixtech.com"
       value = user.valid?
       expect(value).to be_truthy
     end
 
-    # checking invalid email
-    ["praveen.007.gmail.com", "praveenmenon.com"].each do |n|
-      user.email = n
+  it "should not validate email praveenmenon.com"do
+      user.email = "praveenmenon.com"
       value = user.valid?
       expect(value).to be_falsy
-    end
   end
 
-  it "should validate password" do
+  it "should validate password Password@1" do
     
-    ["Password@1", "Password@1"].each do |n|
-      user.password = n
+      user.password = "Password@1"
       value = user.valid?
       expect(value).to be_truthy
     end
-    
-  end
 
 end

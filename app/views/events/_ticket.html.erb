@@ -1,0 +1,22 @@
+   <!--List view begin -->
+   <div class="event-panels">
+     <div class="row">
+      <div class="col-sm-2">
+       <div class="order-number">1 </div>
+     </div>
+     <div class="col-sm-10">
+       <div class="event-title"><%=event.event_name%></div>
+       <div class="organiser"><%=event.user.name.titleize%></div>
+       <!-- Participant button-->     
+       <div class="participants">
+         
+         <%= link_to "Participants", event_path(event), remote: true %>
+         <%if event.status=="open"%>
+         <span class="badge pull-right">Open</span>
+         <%else event.status=="close"%>
+         <span class="badge closed pull-right">Close</span>
+         <% end %>
+       </div>
+     </div>
+   </div>
+ </div>
