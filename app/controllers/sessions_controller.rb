@@ -29,7 +29,7 @@ class SessionsController < ApplicationController
 
 		if user
  			session[:user_id] = user.id
- 			redirect_to  events_path, :notice => "Logged in!"
+ 			redirect_to  events_index_path, :notice => "Logged in!"
  			flash[:success]= "Successfully Logged In"
 		else
 			flash[:error]="Email id and password does not match"
