@@ -1,8 +1,8 @@
-it:
+production:
   adapter: postgresql
   encoding: unicode
   reconnect: false
-  database: event_scheduling_it
+  database: event_production
   pool: 5
   username: postgres
   password: password
