@@ -17,7 +17,7 @@
 
  */
 
-/*pagination css for kaminari*/
+ /*pagination css for kaminari*/
 
  .pagination a, .pagination span.current, .pagination span.gap {
     float: left;
@@ -57,3 +57,5 @@
         border: none;
     }
 }
+
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">

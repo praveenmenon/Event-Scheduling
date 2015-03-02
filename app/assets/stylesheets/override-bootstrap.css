@@ -2,21 +2,21 @@
 
 html, body.landing-page-bg {
   /*  background-color: #333333;*/
-    height: 100%;
+  height: 100%;
 }
 body {
-    color: #333333;
-    height: 100%;
+  color: #333333;
+  height: 100%;
 }
 .navbar {
-    border-radius: 0px;
+  border-radius: 0px;
 }
 .navbar-brand {
-     font-size: 28px;font-weight: 600;
+ font-size: 28px;font-weight: 600;
 }
 .modal-dialog {
-    margin: 80px auto;
-    width: 500px;
+  margin: 80px auto;
+  width: 500px;
 }
 
 .tableCreateEvent {
@@ -42,16 +42,16 @@ body {
   border: 1px solid #ccc;
   border-radius: 4px;
   -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
-          box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
   -webkit-transition: border-color ease-in-out .15s, -webkit-box-shadow ease-in-out .15s;
-       -o-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
-          transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+  -o-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+  transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
 }
 .form-control1:focus {
   border-color: #66afe9;
   outline: 0;
   -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(102, 175, 233, .6);
-          box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(102, 175, 233, .6);
+  box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(102, 175, 233, .6);
 }
 .form-control1::-moz-placeholder {
   color: #999;
@@ -74,14 +74,14 @@ textarea.form-control1 {
   height: auto;
 }
 .col-sm-1 {
-width: 16.333333%;
+  width: 16.333333%;
 }
 .col-sm-1a {
-    width: 8.33333333%;
-    position: relative;
+  width: 8.33333333%;
+  position: relative;
   min-height: 1px;
   padding-right: 15px;
   padding-left: 15px;
   float: left
-  }
+}
 

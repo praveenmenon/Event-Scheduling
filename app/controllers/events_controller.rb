@@ -27,14 +27,14 @@ class EventsController < ApplicationController
 			end
 			respond_to do |format|
 				format.html{
-					redirect_to events_index_path,:notice => "Event Created!"
+					redirect_to events_path,:notice => "Event Created!"
 				}
 				format.js{
-					redirect_to events_index_path,:notice => "Event Created!"
+					redirect_to events_path,:notice => "Event Created!"
 				}
 			end
 		else
-			redirect_to events_index_path, :notice => "Event cannot be Created!"
+			redirect_to events_path, :notice => "Event cannot be Created!"
 		end
 	end
 
@@ -43,12 +43,16 @@ class EventsController < ApplicationController
 		@events = Event.order("updated_at desc").page(params[:page]).per(5)
 		@event=@events.first
 		@participants=@event.selectInvitee(@event.id)
+		@user=@event.notparticipants(@event.id)
 	end
 
 	def edit
 		@users=User.all
+		binding.pry
 		@event= Event.find(params[:id])
+		binding.pry
 		@participants=@event.selectInvitee(@event.id)
+		@user=@event.notparticipants(@event.id)
 		respond_to do |format|
 			format.js{}
 		end
@@ -63,14 +67,14 @@ class EventsController < ApplicationController
 			end
 			respond_to do |format|
 				format.html{
-					redirect_to events_index_path,:notice => "Event Updated!"
+					redirect_to events_path,:notice => "Event Updated!"
 				}
 				format.js{
-					redirect_to events_index_path,:notice => "Event Updated!"
+					redirect_to events_path,:notice => "Event Updated!"
 				}
 			end
 		else
-			redirect_to events_index_path, :notice => "Event cannot be Updated!"
+			redirect_to events_path, :notice => "Event cannot be Updated!"
 		end
 
 	end

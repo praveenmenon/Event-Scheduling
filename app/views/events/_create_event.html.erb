@@ -81,8 +81,7 @@
   <%end%>
   <%end%>
   <%end%>
-
-  <%@user=users.where('id not in (?)',participants)%>
+  <%@user=notparticipants%>
   <% @user.each do |user|%>
   <tr>
     <td><%= check_box_tag "invitees[]", user.id %></td>

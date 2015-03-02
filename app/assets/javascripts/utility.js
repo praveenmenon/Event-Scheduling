@@ -3,3 +3,6 @@ setTimeout(function(){  $(".event-panels").click(function(){
   $(".active").removeClass("active");
   $(this).addClass("active");
 }); }, 400);
+
+
+ 

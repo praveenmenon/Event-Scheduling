@@ -38,7 +38,7 @@
       <!--Show View item -->
       <div class="col-sm-7">
         <div id="div_event_details">
-          <%= render :partial => "events/create_event",:locals=>{:participants=>@participants,:users=>@users}%> 
+          <%= render :partial => "events/create_event",:locals=>{:participants=>@participants,:users=>@users,:notparticipants=>@user}%> 
         </div>
       </div>
       <!-- ./ Show item --> 
