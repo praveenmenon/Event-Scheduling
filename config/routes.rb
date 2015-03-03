@@ -6,10 +6,6 @@ Rails.application.routes.draw do
    root 'welcome#index'
 
   # Example of regular route:
-   # get 'events/participants' => 'events#participants'
-   # get 'events/index' => 'events#index'
-   # get 'sessions/create' =>'sessions#create'
-   # get 'sessions/new' => 'sessions#new'
    delete 'sessions/destroy' => 'sessions#destroy'
    get "users/check_email" => 'users#check_email'
    get "sessions/check_email" => 'sessions#check_email'
@@ -25,7 +21,7 @@ Rails.application.routes.draw do
   #   get 'products/:id/purchase' => 'catalog#purchase', as: :purchase
 
   # Example resource route (maps HTTP verbs to controller actions automatically):
-     resources :users
+    resources :users
     resources :sessions
     resources :events
 

@@ -29,9 +29,6 @@ class EventsController < ApplicationController
 				format.html{
 					redirect_to events_path,:notice => "Event Created!"
 				}
-				format.js{
-					redirect_to events_path,:notice => "Event Created!"
-				}
 			end
 		else
 			redirect_to events_path, :notice => "Event cannot be Created!"
@@ -48,9 +45,7 @@ class EventsController < ApplicationController
 
 	def edit
 		@users=User.all
-		binding.pry
 		@event= Event.find(params[:id])
-		binding.pry
 		@participants=@event.selectInvitee(@event.id)
 		@user=@event.notparticipants(@event.id)
 		respond_to do |format|
@@ -69,9 +64,6 @@ class EventsController < ApplicationController
 				format.html{
 					redirect_to events_path,:notice => "Event Updated!"
 				}
-				format.js{
-					redirect_to events_path,:notice => "Event Updated!"
-				}
 			end
 		else
 			redirect_to events_path, :notice => "Event cannot be Updated!"
@@ -84,5 +76,4 @@ class EventsController < ApplicationController
 	def event_params
 		params.require(:event).permit(:event_name, :venue, :date, :time, :description, :status)
 	end
-
 end
