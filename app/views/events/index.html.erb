@@ -23,13 +23,14 @@
       <div class="row"> 
        <!--List View column -->
        <div class="col-sm-5"> 
-         
+         <%if @events.present?%>
         <%@events.each do|event|%>
         <%= link_to edit_event_path(event), remote: true do %>
         <%= render :partial => "events/ticket",:locals=>{:event=>event} %>
         <%end%>
         <%end%>
         <%= paginate @events %>
+        <%end%>
 
       </div>
       
@@ -38,7 +39,9 @@
       <!--Show View item -->
       <div class="col-sm-7">
         <div id="div_event_details">
+        <%if @events.present?%>
           <%= render :partial => "events/create_event",:locals=>{:participants=>@participants,:users=>@users,:notparticipants=>@user}%> 
+          <%end%>
         </div>
       </div>
       <!-- ./ Show item --> 

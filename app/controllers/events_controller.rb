@@ -38,9 +38,15 @@ class EventsController < ApplicationController
 	def index
 		@users=User.all
 		@events = Event.order("updated_at desc").page(params[:page]).per(5)
-		@event=@events.first
-		@participants=@event.selectInvitee(@event.id)
-		@user=@event.notparticipants(@event.id)
+		@events.each do|event|
+			if event.present?	
+				@event=@events.first
+				@participants=@event.selectInvitee(@event.id)
+				@user=@event.notparticipants(@event.id)
+			else
+				redirect_to events_path, :notice => "No events"
+			end
+		end
 	end
 
 	def edit
