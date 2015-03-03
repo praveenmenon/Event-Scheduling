@@ -28,6 +28,7 @@ class Event < ActiveRecord::Base
 			@invitee.save
 			@user=User.find_by_id(id)
 			@event=Event.find_by_id(event_id)
+			binding.pry
 			InviteMailer.send_email(@user,@event).deliver
 		end
 	end

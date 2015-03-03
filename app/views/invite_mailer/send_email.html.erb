@@ -3,6 +3,7 @@
     <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
   </head>
   <body>
+  <% binding.pry %>
     <p>Hi, <%= @invitee.name %>!</p>
     <p><%=@creator.user.name%> has invited you for the event- '<%=@creator.event_name%>'. Please send your response <a href="#">YES</a> | <a href="#">NO</a></p>
   </body>
