@@ -5,7 +5,7 @@
 				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
 				<h4 class="modal-title">Log In</h4>
 			</div>
-			<%= form_tag sessions_create_path , :class =>"form-horizontal", :id =>"signin_user", :remote=> true, :method=> :get do |f| %>
+			<%= form_tag sessions_path , :class =>"form-horizontal", :id =>"signin_user", :remote=> true, :method=> :post do |f| %>
 			<div class="modal-body">
 				<div class="form-group">
 					<label for="inputEmail" class="col-sm-3 control-label">Email id</label>
