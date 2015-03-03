@@ -29,9 +29,6 @@ class EventsController < ApplicationController
 				format.html{
 					redirect_to events_path,:notice => "Event Created!"
 				}
-				format.js{
-					redirect_to events_path,:notice => "Event Created!"
-				}
 			end
 		else
 			redirect_to events_path, :notice => "Event cannot be Created!"
@@ -41,23 +38,27 @@ class EventsController < ApplicationController
 	def index
 		@users=User.all
 		@events = Event.order("updated_at desc").page(params[:page]).per(5)
-		@event=@events.first
-		@participants=@event.selectInvitee(@event.id)
-		@user=@event.notparticipants(@event.id)
+		@events.each do|event|
+			if event.present?	
+				@event=@events.first
+				@participants=@event.selectInvitee(@event.id)
+				@user=@event.notparticipants(@event.id)
+			else
+				redirect_to events_path, :notice => "No events"
+			end
+		end
 	end
 
 	def edit
 		@users=User.all
-		binding.pry
 		@event= Event.find(params[:id])
-		binding.pry
 		@participants=@event.selectInvitee(@event.id)
 		@user=@event.notparticipants(@event.id)
 		respond_to do |format|
 			format.js{}
 		end
 	end
-	
+
 	def update
 		@event= Event.find(params[:id])
 		if @event.valid? && @event.errors.blank?
@@ -69,9 +70,6 @@ class EventsController < ApplicationController
 				format.html{
 					redirect_to events_path,:notice => "Event Updated!"
 				}
-				format.js{
-					redirect_to events_path,:notice => "Event Updated!"
-				}
 			end
 		else
 			redirect_to events_path, :notice => "Event cannot be Updated!"
@@ -80,9 +78,8 @@ class EventsController < ApplicationController
 	end
 
 	private
-	
+
 	def event_params
 		params.require(:event).permit(:event_name, :venue, :date, :time, :description, :status)
 	end
-
 end
