@@ -4,7 +4,7 @@ development:
   reconnect: false
   database: event_development
   pool: 5
-  username: event_dev
+  username: postgres
   password: password
   host: localhost
   port: 5432
@@ -18,7 +18,7 @@ production:
   reconnect: false
   database: event_production
   pool: 5
-  username: event_prod
+  username: postgres
   password: password
   host: localhost
   port: 5432

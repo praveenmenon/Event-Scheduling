@@ -36,7 +36,7 @@ gem 'bcrypt'
 
 
 
-gem 'capistrano', '~> 3.3.0'
+# gem 'capistrano', '~> 3.3.0'
 # Use Unicorn as the app server
 # gem 'unicorn'
 
