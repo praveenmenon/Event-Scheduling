@@ -8,8 +8,8 @@ class EventsController < ApplicationController
 		end
 	end
 
-	def show 
-		@users=User.all 
+	def show
+		@users=User.all
 		@event= Event.find(params[:id])
 		@participants=@event.selectInvitee(@event.id)
 		respond_to do |format|
