@@ -30,7 +30,7 @@
     </div>
     <!--Venue -->
     <div class="form-group">
-     <label for="inputVenue" class="col-sm-3 control-label">Venue</label>
+     <label for="inputVenue" class="col-sm-3 control-label">Venue*</label>
      <div class="col-sm-7">
       <%= f.text_field :venue,:class =>"form-control1", :id=>"venue_name",:placeholder => "Venue" %>
     </div>
@@ -38,19 +38,19 @@
   </div>
   <!--Date and Time -->
   <div class="form-group">
-   <label for="inputDate" class="col-sm-3 control-label">Date</label>
+   <label for="inputDate" class="col-sm-3 control-label">Date*</label>
    <div class="col-sm-3">
     <%= f.text_field :date,:class =>"form-control1", :id=>"venue_name",:id =>"datepicker",:placeholder => "Date" %>
   </div>
 
-  <label for="inputTime" class="col-sm-1 control-label">Time</label>
+  <label for="inputTime" class="col-sm-1 control-label">Time*</label>
   <div class="col-sm-3">
     <%= f.time_field :time,:class =>"form-control1", :id=>"event_time",:placeholder => "Time" %>
   </div>
 </div>
 <!--Description -->
 <div class="form-group">
- <label for="inputescription" class="col-sm-3 control-label">Description</label>
+ <label for="inputescription" class="col-sm-3 control-label">Description*</label>
  <div class="col-sm-7">
   <%= f.text_area :description,:size=> "50x7",:class =>"form-control1", :id=>"venue_name",:placeholder => "Description" %>
 </div>

@@ -85,3 +85,7 @@ textarea.form-control1 {
   float: left
 }
 
+ .scroll{
+  height: 150px;
+   overflow-y:scroll;
+}

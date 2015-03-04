@@ -47,9 +47,10 @@
 </div>
 <div class="col-sm-2"></div>
 </div>
-<!--Invitees -->
+<!--Invited -->
+<% if @event.user_id!=current_user.id %>
 <div class="form-group">
- <label for="inputescription" class="col-sm-3 control-label">Invitees</label>
+ <label for="inputescription" class="col-sm-3 control-label">Invited</label>
  <div class="col-sm-7">
   <table class="table table-responsive table-fixed">
    <thead>
@@ -59,7 +60,7 @@
   <tbody style="border-style: solid;border-width: 1px;border-color: #ccc;">
 
    <!-- not current user's ticket -->
-   <% if @event.user_id!=current_user.id %>
+   
    <%participants.each do |user_id| %>
    <% users.each do |user|%>
    <% if user.id ==user_id%>
@@ -69,19 +70,59 @@
   <%end%>
   <%end%>
   <%end%>
-  <%else%>
+  
+</tbody>
+</table>
+</div>
+<div class="col-sm-2"></div>
+</div>
 
-  <!-- current user's ticket -->
-  <%participants.each do |user_id| %>
-  <% users.each do |user|%>
-  <% if user.id ==user_id%>
-  <tr>
+
+<%else%>
+
+
+<div class="form-group">
+ <label for="inputescription" class="col-sm-3 control-label">Invited</label>
+ <div class="col-sm-7">
+  <table class="table table-responsive table-fixed">
+   <thead>
+    <tr>
+    </tr>
+  </thead>
+  <tbody style="border-style: solid;border-width: 1px;border-color: #ccc;">
+
+   <!-- not current user's ticket -->
+   
+   <%participants.each do |user_id| %>
+   <% users.each do |user|%>
+   <% if user.id ==user_id%>
+   <tr>
     <td><%=user.name.titleize%></td>
   </tr>
   <%end%>
   <%end%>
   <%end%>
+  
+</tbody>
+</table>
+</div>
+<div class="col-sm-2"></div>
+</div>
+
+<!-- invite new users -->
+
+<div class="form-group">
+ <label for="inputescription" class="col-sm-3 control-label">Invite</label>
+ <div class="col-sm-7">
+  <table class="table table-responsive table-fixed">
+   <thead>
+    <tr>
+    </tr>
+  </thead>
+  <tbody style="border-style: solid;border-width: 1px;border-color: #ccc;">
+
   <%@user=notparticipants%>
+  <%if @user.present?%>
   <% @user.each do |user|%>
   <tr>
     <td><%= check_box_tag "invitees[]", user.id %></td>
@@ -89,12 +130,19 @@
   </tr>
 
   <%end%>
+  <%else%>
+  <tr>
+    <th style="text-align:center;">No users left to invite</th>
+  </tr>
   <%end%>
+
 </tbody>
 </table>
 </div>
 <div class="col-sm-2"></div>
 </div>
+<%end%>
+
 
 <!--Status -->
 <div class="form-group">

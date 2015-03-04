@@ -6,14 +6,17 @@
       <h4 class="modal-title" id="myModalLabel">Participant List</h4>
     </div>
     <div class="modal-body">
-      <div class="table-responsive">
+      
         <table class="table table-condensed">
          <thead>
           <tr>
            <th class="col-sm-8">Participants Name</th>
-           <th class="col-sm-4">Status</th>
+           <th class="col-sm-2">Status</th>
          </tr>
        </thead>
+       </table>
+       <div class="scroll">
+       <table class="table table-condensed">
        
        <%participants.each do |userid| %>
        <% users.each do |u|%>
@@ -21,14 +24,15 @@
        <tbody>
         <tr>
          <td class="col-sm-8"><%=u.name.titleize%></td>
-         <td class="col-sm-2"><label class="radio-inline"><input type="radio" name="optionsRadios" id="yes" value="yes1" checked="">Yes</label> <label class="radio-inline"><input type="radio" name="optionsRadios" id="no" value="no1" checked="">No</label></td>
+         <td class="col-sm-2">Yes | No</td>
        </tr>               
      </tbody>
      <%end%>
      <%end%>
      <%end%>
    </table>
- </div>
+   </div>
+ 
  <!-- ./ Participant modal  -->
 </div>
 <div class="modal-footer">
