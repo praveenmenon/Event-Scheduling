@@ -9,12 +9,17 @@ class EventsController < ApplicationController
 	end
 
 	def show
+
 		@users=User.all
 		@event= Event.find(params[:id])
 		@participants=@event.selectInvitee(@event.id)
 		respond_to do |format|
 			format.js{}
 		end
+	end
+
+	def email_response
+		@response=params[:reply]
 	end
 
 	def create
