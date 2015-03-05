@@ -1,9 +1,13 @@
 <html>
-  <head>
-    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
-  </head>
-  <body>
-    <p>Hi, <%= @invitee.name %>!</p>
-    <p><%=@creator.user.name%> has invited you for the event- '<%=@creator.event_name%>'. Please send your response <a href="http://localhost:3000/events/email_response?reply=yes">YES</a> | <a href="http://localhost:3000/events/email_response?reply=no">NO</a></p>
-  </body>
+<head>
+	<meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+</head>
+<body>
+	<p>Hi, <%= @invitee.user.name %>!</p>
+	<p><%=@creator%> has invited you for the event- '<%=@invitee.event.event_name%>'. Please send your response 
+	<%= link_to "Yes", email_response_event_url(@invitee.id,:response => "yes")%>
+	<%= link_to "No", email_response_event_url(@invitee.id ,:response => "no")%>
+
+	</p>
+</body>
 </html>

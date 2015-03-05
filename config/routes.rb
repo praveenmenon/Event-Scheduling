@@ -16,7 +16,6 @@ Rails.application.routes.draw do
    get '/auth/:provider/callback', to: 'sessions#create'
    get '/auth/failure', to: redirect('/')
    get 'sign_out', to: 'sessions#destroy', as: 'sign_out'
-   get "events/email_response"=> 'events#email_response', as: :email_response
 
   # Example of named route that can be invoked with purchase_url(id: product.id)
   #   get 'products/:id/purchase' => 'catalog#purchase', as: :purchase
@@ -24,19 +23,13 @@ Rails.application.routes.draw do
   # Example resource route (maps HTTP verbs to controller actions automatically):
     resources :users
     resources :sessions
-    resources :events
 
   # Example resource route with options:
-  #   resources :products do
-  #     member do
-  #       get 'short'
-  #       post 'toggle'
-  #     end
-  #
-  #     collection do
-  #       get 'sold'
-  #     end
-  #   end
+    resources :events do
+      member do
+        get 'email_response'
+      end
+    end
 
   # Example resource route with sub-resources:
   #   resources :products do

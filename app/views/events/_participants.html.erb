@@ -6,32 +6,41 @@
       <h4 class="modal-title" id="myModalLabel">Participant List</h4>
     </div>
     <div class="modal-body">
-      
-        <table class="table table-condensed">
-         <thead>
-          <tr>
-           <th class="col-sm-8">Participants Name</th>
-           <th class="col-sm-2">Status</th>
-         </tr>
-       </thead>
-       </table>
-       <div class="scroll">
-       <table class="table table-condensed">
-       
-       <%participants.each do |userid| %>
-       <% users.each do |u|%>
-       <% if u.id ==userid%>
-       <tbody>
+
+      <table class="table table-condensed">
+       <thead>
         <tr>
-         <td class="col-sm-8"><%=u.name.titleize%></td>
-         <td class="col-sm-2"><span class="respond_yes"><b>Yes</b></span> | <span class="respond_no"><b>No</b></span></td>
+         <th class="col-sm-8">Participants Name</th>
+         <th class="col-sm-2">Status</th>
+       </tr>
+     </thead>
+   </table>
+   <div class="scroll">
+     <table class="table table-condensed">
+      <%participants.each do |userid| %>
+      <% users.each do |user|%>
+      <% if user.id ==userid%>
+      <tbody>
+        <tr>
+         <td class="col-sm-8"><%=user.name.titleize%></td>
+         <%invitee.each do|invitee_id|%>
+         <%if user.id==invitee_id.user_id%>
+         <%if invitee_id.response=="yes"%>
+         <td class="col-sm-2"><span class="respond_yes"><b>Yes</b></span> | <span class="respond_default"><b>No</b></span></td>
+         <%elsif invitee_id.response=="no"%>
+         <td class="col-sm-2"><span class="respond_default"><b>Yes</b></span> | <span class="respond_no"><b>No</b></span></td>
+         <%else%>
+         <td class="col-sm-2"><span class="respond_default"><b>Yes</b></span> | <span class="respond_default"><b>No</b></span></td>
+         <%end%>
+         <%end%>
+         <%end%>
        </tr>               
      </tbody>
      <%end%>
      <%end%>
      <%end%>
    </table>
-   </div>
+ </div>
  
  <!-- ./ Participant modal  -->
 </div>
