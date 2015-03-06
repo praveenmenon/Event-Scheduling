@@ -22,13 +22,12 @@ class Event < ActiveRecord::Base
 	:presence =>true
 
 
-	def addInvitees(user_id,event_id)
+	def addInvitees(user_id,event_id,current_user)
 		user_id.each do |id|
 			@invitee = Invitee.new(user_id: id, event_id: event_id)
 			@invitee.save
-			@user=User.find_by_id(id)
-			@event=Event.find_by_id(event_id)
-			InviteMailer.send_email(@user,@event).deliver
+			@creator = current_user.name
+			InviteMailer.send_email(@invitee, @creator).deliver
 		end
 	end
 

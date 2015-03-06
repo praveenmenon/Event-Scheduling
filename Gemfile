@@ -24,6 +24,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 
 gem 'rails_12factor', group: :production
 gem 'pg', '~> 0.18.1'
+gem 'rb-readline'
 
 gem 'bootstrap-sass'
 gem "jquery-validation-rails"
@@ -35,7 +36,7 @@ gem 'bcrypt'
 
 
 
-gem 'capistrano', '~> 3.3.0'
+# gem 'capistrano', '~> 3.3.0'
 # Use Unicorn as the app server
 # gem 'unicorn'
 

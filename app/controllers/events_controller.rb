@@ -8,12 +8,24 @@ class EventsController < ApplicationController
 		end
 	end
 
-	def show 
-		@users=User.all 
+	def show
+
+		@users=User.all
 		@event= Event.find(params[:id])
+		@invitee=Invitee.where(event_id:@event)
 		@participants=@event.selectInvitee(@event.id)
 		respond_to do |format|
 			format.js{}
+		end
+	end
+
+	def email_response
+		@invitee = Invitee.find_by_id(params[:id])
+		@response = params[:response]
+		if @invitee.valid?
+			@invitee.response=@response
+			@invitee.save
+			redirect_to root_path,:notice =>" Thank you for RSVP"
 		end
 	end
 
@@ -23,7 +35,7 @@ class EventsController < ApplicationController
 		if @event.valid? && @event.errors.blank?
 			@event.save
 			if params["invitees"].present?
-				@event.addInvitees(params["invitees"],@event.id)
+				@event.addInvitees(params["invitees"],@event.id,current_user)
 			end
 			respond_to do |format|
 				format.html{
@@ -64,7 +76,7 @@ class EventsController < ApplicationController
 		if @event.valid? && @event.errors.blank?
 			@event.update(event_params)
 			if params["invitees"].present?
-				@event.addInvitees(params["invitees"],@event.id)
+				@event.addInvitees(params["invitees"],@event.id,current_user)
 			end
 			respond_to do |format|
 				format.html{
@@ -74,7 +86,6 @@ class EventsController < ApplicationController
 		else
 			redirect_to events_path, :notice => "Event cannot be Updated!"
 		end
-
 	end
 
 	private

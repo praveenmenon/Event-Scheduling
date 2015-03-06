@@ -1,7 +1,7 @@
 <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/themes/base/jquery-ui.css" type="text/css" media="all">
 
 <script type="text/javascript">
-  var dateToday = new Date(); 
+  var dateToday = new Date();
   $(function() {
    $( "#datepicker" ).datepicker({ minDate: 0,dateFormat: 'yy-mm-dd'});
  });
@@ -18,19 +18,19 @@
     <div class="row">
      <div class="col-sm-12">
       <%= form_for :event, :url => events_path, :method=> 'post',:html => {:class =>"form-horizontal",:id =>"event_form"} do |f| %>
-      
+
       <!--Venue -->
       <div class="form-group">
        <label for="inputEvent" class="col-sm-3 control-label">Event*</label>
        <div class="col-sm-7">
-        
+
         <%= f.text_field :event_name,:class =>"form-control1", :id=>"event_name",:placeholder => "Event" %>
       </div>
       <div class="col-sm-2"></div>
     </div>
     <!--Venue -->
     <div class="form-group">
-     <label for="inputVenue" class="col-sm-3 control-label">Venue</label>
+     <label for="inputVenue" class="col-sm-3 control-label">Venue*</label>
      <div class="col-sm-7">
       <%= f.text_field :venue,:class =>"form-control1", :id=>"venue_name",:placeholder => "Venue" %>
     </div>
@@ -38,19 +38,19 @@
   </div>
   <!--Date and Time -->
   <div class="form-group">
-   <label for="inputDate" class="col-sm-3 control-label">Date</label>
+   <label for="inputDate" class="col-sm-3 control-label">Date*</label>
    <div class="col-sm-3">
     <%= f.text_field :date,:class =>"form-control1", :id=>"venue_name",:id =>"datepicker",:placeholder => "Date" %>
   </div>
 
-  <label for="inputTime" class="col-sm-1 control-label">Time</label>
+  <label for="inputTime" class="col-sm-1 control-label">Time*</label>
   <div class="col-sm-3">
     <%= f.time_field :time,:class =>"form-control1", :id=>"event_time",:placeholder => "Time" %>
   </div>
 </div>
 <!--Description -->
 <div class="form-group">
- <label for="inputescription" class="col-sm-3 control-label">Description</label>
+ <label for="inputescription" class="col-sm-3 control-label">Description*</label>
  <div class="col-sm-7">
   <%= f.text_area :description,:size=> "50x7",:class =>"form-control1", :id=>"venue_name",:placeholder => "Description" %>
 </div>
@@ -63,7 +63,7 @@
   <table class="tableCreateEvent table table-responsive table-fixed">
    <thead>
     <tr>
-     
+
      <th class="col-sm-10"></th>
    </tr>
  </thead>
@@ -96,7 +96,7 @@
 <%end%>
 </div>
 </div>
-<!-- ./ Moodel body -->     
+<!-- ./ Moodel body -->
 </div>
 
 </div>
