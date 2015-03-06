@@ -5,8 +5,12 @@
        <div class="order-number"></div>
      </div>
      <div class="col-sm-10">
-       <div class="event-title"><%=event.event_name%></div>
-       <div class="organiser"><%=event.user.name.titleize%></div>
+       <div class="event-title">
+       <b style="color:#4cae4c; text-transform:none" >Event&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;&nbsp;</b>
+       <%=event.event_name%></div>
+       <div class="organiser">
+       <b style="color:#4cae4c; font-size: 16px;">Organiser&nbsp;:&nbsp;&nbsp;</b>
+       <%=event.user.name.titleize%></div>
        <!-- Participant button-->     
        <div class="participants">
          

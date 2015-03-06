@@ -85,3 +85,40 @@ textarea.form-control1 {
   float: left
 }
 
+ .scroll{
+  height: 165px;
+   overflow-y:scroll;
+}
+
+.respond_yes
+{
+  background-color: green;
+  color: white;
+  padding: 1px 5px;
+  font-size: 12px;
+  line-height: 1.5;
+  border-radius: 3px; 
+}
+
+.respond_default
+{
+  color: #333;
+  background-color: #fff;
+  border-color: #ccc;
+  padding: 1px 5px;
+  font-size: 12px;
+  line-height: 1.5;
+  border-style: solid;
+  border-radius: 3px;
+  border-width:1px;
+}
+
+.respond_no
+{
+  background-color: red;
+  color: white;
+  padding: 1px 5px;
+  font-size: 12px;
+  line-height: 1.5;
+  border-radius: 3px; 
+}
