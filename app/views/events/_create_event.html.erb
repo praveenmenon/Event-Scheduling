@@ -1,5 +1,5 @@
 
- <script type="text/javascript">
+<script type="text/javascript">
   var dateToday = new Date(); 
   $(function() {
    $( "#datepicker1" ).datepicker({ minDate: 0,dateFormat: 'yy-mm-dd'});
@@ -120,22 +120,23 @@
   </thead>
   <tbody style="border-style: solid;border-width: 1px;border-color: #ccc;">
 
-  <%@user=notparticipants%>
-  <%if @user.present?%>
-  <% @user.each do |user|%>
-  <tr>
-    <td><%= check_box_tag "invitees[]", user.id %></td>
-    <td><%=user.name.titleize%></td>
-  </tr>
+    <%@user=notparticipants%>
+    <%if @user.present?%>
+    <% @user.each do |user|%>
+    <% unless user.id==current_user.id %>
+    <tr>
+      <td><%= check_box_tag "invitees[]", user.id %></td>
+      <td><%=user.name.titleize%></td>
+    </tr>
+    <%end%>
+    <%end%>
+    <%else%>
+    <tr>
+      <th style="text-align:center;">No users left to invite</th>
+    </tr>
+    <%end%>
 
-  <%end%>
-  <%else%>
-  <tr>
-    <th style="text-align:center;">No users left to invite</th>
-  </tr>
-  <%end%>
-
-</tbody>
+  </tbody>
 </table>
 </div>
 <div class="col-sm-2"></div>

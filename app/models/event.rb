@@ -37,6 +37,10 @@ class Event < ActiveRecord::Base
 
 	def notparticipants(event1)
 		@user=User.all()
-		@user.where('id not in (?)',Invitee.where(event_id: event1).pluck(:user_id))
+		if Invitee.where(event_id: event1).pluck(:user_id).blank?
+			@user.all
+		else
+			@user.where('id not in (?)',Invitee.where(event_id: event1).pluck(:user_id))
+		end
 	end
 end
