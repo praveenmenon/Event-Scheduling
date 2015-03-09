@@ -3,14 +3,13 @@ Rails.application.routes.draw do
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-   root 'welcome#index'
+   root 'users#index'
 
   # Example of regular route:
    delete 'sessions/destroy' => 'sessions#destroy'
    get "users/check_email" => 'users#check_email'
    get "sessions/check_email" => 'sessions#check_email'
    get "sessions/check_password" => 'sessions#check_password'
-
 
    #OmniAuth twitter
    get '/auth/:provider/callback', to: 'sessions#create'

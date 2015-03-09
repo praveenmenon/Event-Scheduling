@@ -1,5 +1,5 @@
 class EventsController < ApplicationController
-	before_filter :require_login
+	before_filter :require_login, :except =>[:email_response]
 
 	def new
 		@event=Event.new
