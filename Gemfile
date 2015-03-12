@@ -30,6 +30,7 @@ gem 'bootstrap-sass'
 gem "jquery-validation-rails"
 gem 'omniauth-twitter'
 gem 'kaminari'
+gem 'carrierwave'
 
 # Use ActiveModel has_secure_password
 gem 'bcrypt'

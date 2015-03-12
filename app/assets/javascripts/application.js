@@ -16,6 +16,7 @@
 //= require validation
 //= require eventvalid
 //= require utility
+//= signup utility
 //= require flash_message
 //= require signin_valid
 //= require jquery_ujs
