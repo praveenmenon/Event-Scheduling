@@ -16,7 +16,8 @@
      <% if current_user.present? %>
      <div class="navbar-collapse collapse">
        <ul class="nav navbar-nav navbar-right">
-         <li><img src="/assets/Profile-Pic.jpg" alt="Profile picture" class="img-rounded profile-pic">
+       <li>
+        <%= image_tag  current_user.image,  :alt =>"Image", :class => "img-rounded profile-pic" %>
            <span class="profile-name"><%= current_user.name.titleize %></span></li>
            <li> 
              <%= button_to "Sign Out",sessions_destroy_path, :class => "btn btn-success signup-login-btn", :method => :delete %>
