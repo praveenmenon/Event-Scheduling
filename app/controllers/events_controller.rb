@@ -74,6 +74,9 @@ class EventsController < ApplicationController
 	def update
 		@event= Event.find(params[:id])
 		if @event.valid? && @event.errors.blank?
+			binding.pry
+			update=@event.check_update(@event,event_params)
+			binding.pry
 			@event.update(event_params)
 			if params["invitees"].present?
 				@event.addInvitees(params["invitees"],@event.id,current_user)
