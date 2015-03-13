@@ -1,0 +1,18 @@
+<html>
+<head>
+	<meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+</head>
+<body>
+	<p>Hi, <%= @user.name %>!</p>
+	<p>The event <%=@event.event_name%> has been edited</p>
+	<p>
+	<b>Date</b>:<%=@date%><br>
+	<b>Time</b>:<%=@time%><br>
+	<b>Description</b>:<%=@description%><br>
+	. Please send your response 
+	<%= link_to "Yes", email_response_event_url(@invitee,:response => "yes")%>
+	<%= link_to "No", email_response_event_url(@invitee ,:response => "no")%>
+
+	</p>
+</body>
+</html>

@@ -15,7 +15,7 @@
      <label for="inputEvent" class="col-sm-3 control-label">Event*</label>
      <div class="col-sm-7">
       
-      <%= f.text_field :event_name,:class =>"form-control", :id=>"event_name",:placeholder => "Event" , readonly:(@event.user_id!=current_user.id) %>
+      <%= f.text_field :event_name,:class =>"form-control", :id=>"event_name",:placeholder => "Event" , readonly: true %>
     </div>
     <div class="col-sm-2"></div>
   </div>
@@ -23,7 +23,7 @@
   <div class="form-group">
    <label for="inputVenue" class="col-sm-3 control-label">Venue</label>
    <div class="col-sm-7">
-     <%= f.text_field :venue,:class =>"form-control", :id=>"venue_name",:placeholder => "Venue", readonly:(@event.user_id!=current_user.id) %>
+     <%= f.text_field :venue,:class =>"form-control", :id=>"venue_name",:placeholder => "Venue", readonly: true %>
    </div>
    <div class="col-sm-2"></div>
  </div>
