@@ -36,18 +36,11 @@ class Event < ActiveRecord::Base
 	end
 
 	def check_update(old_event,new_event)
-		binding.pry
-		if old_event.description==new_event[:description]&&old_event.venue==new_event[:venue]&&old_event.date==new_event[:time]&&old_event.event_name==new_event[:time]
-			 binding.pry
-			 update= false
-		else
-			binding.pry
-			update= true
+		if old_event.description!=new_event[:description]||old_event.venue!=new_event[:venue]||old_event.date.to_s!=new_event[:date]||old_event.time.strftime('%X')+".000"!=new_event[:time]
+
 			UpdateMail.update_event(old_event,new_event).deliver
 		end
-
 	end
-	
 
 	def notparticipants(event1)
 		@user=User.all()

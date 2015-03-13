@@ -20,14 +20,11 @@ class EventsController < ApplicationController
 	end
 
 	def email_response
-		binding.pry
 		@invitee = Invitee.find_by_id(params[:id])
 		@response = params[:response]
 		if @invitee.valid?
-			binding.pry
 			@invitee.response=@response
 			@invitee.save
-			binding.pry
 			redirect_to root_path,:notice =>" Thank you for RSVP"
 		end
 	end
@@ -77,9 +74,7 @@ class EventsController < ApplicationController
 	def update
 		@event= Event.find(params[:id])
 		if @event.valid? && @event.errors.blank?
-			binding.pry
-			update=@event.check_update(@event,event_params)
-			binding.pry
+			@event.check_update(@event,event_params)
 			@event.update(event_params)
 			if params["invitees"].present?
 				@event.addInvitees(params["invitees"],@event.id,current_user)
