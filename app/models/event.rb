@@ -37,12 +37,13 @@ class Event < ActiveRecord::Base
 
 	def check_update(old_event,new_event)
 		binding.pry
-		if old_event.description==new_event[:description]||old_event.venue==new_event[:venue]||old_event.date==new_event[:time]||old_event.event_name==new_event[:time]
+		if old_event.description==new_event[:description]&&old_event.venue==new_event[:venue]&&old_event.date==new_event[:time]&&old_event.event_name==new_event[:time]
 			 binding.pry
 			 update= false
 		else
+			binding.pry
 			update= true
-			UpdateMail.update_event(old_event,new_event)
+			UpdateMail.update_event(old_event,new_event).deliver
 		end
 
 	end

@@ -25,6 +25,7 @@
          <td class="col-sm-8"><%=user.name.titleize%></td>
          <%invitee.each do|invitee_id|%>
          <%if user.id==invitee_id.user_id%>
+         <%binding.pry%>
          <%if invitee_id.response=="yes"%>
          <td class="col-sm-2"><span class="respond_yes"><b>Yes</b></span> | <span class="respond_default"><b>No</b></span></td>
          <%elsif invitee_id.response=="no"%>

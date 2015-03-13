@@ -20,11 +20,14 @@ class EventsController < ApplicationController
 	end
 
 	def email_response
+		binding.pry
 		@invitee = Invitee.find_by_id(params[:id])
 		@response = params[:response]
 		if @invitee.valid?
+			binding.pry
 			@invitee.response=@response
 			@invitee.save
+			binding.pry
 			redirect_to root_path,:notice =>" Thank you for RSVP"
 		end
 	end
